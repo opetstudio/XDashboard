@@ -14,7 +14,7 @@ import CryptoJS from 'crypto-js'
 import Helmet from 'react-helmet'
 import { isEmpty, isNil } from 'ramda'
 import AppConfig from '../../Config/AppConfig'
-import Loader from '../Loader/Loader'
+import Loader from '../../Components/Loader/Loader'
 const basePath = AppConfig.basePath
 
 // var bcrypt = require('bcryptjs')

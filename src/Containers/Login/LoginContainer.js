@@ -2,23 +2,24 @@ import React from 'react'
 import { connect } from 'react-redux'
 import qs from 'qs'
 import LoginActions, { LoginSelectors } from './redux'
-import {isLoggedIn, getAccessToken} from '../../Utils/Utils'
-import LoginPageComponent from '../../Components/Login/LoginPageComponent'
+import { isLoggedIn, getAccessToken } from '../../Utils/Utils'
+import LoginComponent from './LoginComponent'
 import { injectIntl } from 'react-intl'
 import AppConfig from '../../Config/AppConfig'
 const basePath = AppConfig.basePath
 
 class TheComponent extends React.PureComponent {
   componentWillMount () {
-    let force = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).force
-    if(force === 'y'){
+    const force = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).force
+    if (force === 'y') {
       window.localStorage.removeItem(AppConfig.sessionData)
       window.open(`${basePath}/login`, '_self', true)
     }
   }
+
   render () {
     console.log('render')
-    if (isLoggedIn(this.props.isLoggedIn) !== true) return (<LoginPageComponent {...this.props} />)
+    if (isLoggedIn(this.props.isLoggedIn) !== true) return (<LoginComponent {...this.props} />)
     // if (isLoggedIn(this.props.isLoggedIn) !== true) return null
     // else return null
     else return window.open(`${basePath}/home/${getAccessToken(this.props.sessionToken)}`, '_self', true)
