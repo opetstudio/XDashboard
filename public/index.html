@@ -24,11 +24,179 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/bower_components/select2/dist/css/select2.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+        folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+      <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
+
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+      -->
+      <script>
+        __DEV__ = '%NODE_ENV%' === 'development'
+        window.SHIPPING_ADDRESS = 'ASDF ASDFADSF'
+        window.FIRST_NAME = '_FIRST_NAME_'
+        window.LAST_NAME = '_LAST_NAME_'
+        window.CALLBACK_URL = '_CALLBACK_URL_'
+        window.CTRX_ID = '_CTRX_ID_'
+        window.STRX_ID = '_STRX_ID_'
+        window.PAR1 = '_PAR1_'
+        window.PAR2 = '_PAR2_'
+        window.PAR3 = '_PAR3_'
+        window.PAR4 = '_PAR4_'
+        window.PAR5 = '_PAR5_'
+        window.PAR6 = '_PAR6_'
+        window.PAR7 = '_PAR7_'
+        window.PAR8 = '_PAR8_'
+        window.PAR9 = '_PAR9_'
+        window.PAR10 = '_PAR10_'
+        window.PAR11 = '_PAR11_'
+        window.PAR12 = '_PAR12_'
+        window.MERCHANT_NAME = '_MERCHANT_NAME_'
+        window.PRODUCT_CODE = '_PRODUCT_CODE_'
+        window.PERIOD = '_PERIOD_'
+        window.LANG = document.documentElement.lang
+        // window.SHIPPING_ADDRESS = _SHIPPING_ADDRESS_
+        console.log('====>>>%NODE_ENV%', __DEV__)
+      </script>
+      <style>
+        #segment1{
+          /* background-color: blue; */
+          margin-top: 10px;
+          padding: 10px;
+          border-radius: 15px 15px 0px 0px;
+          /* border-color: black; */
+        }
+      #segment2{
+        padding: 0px;
+        background-color: transparent;
+        margin-bottom: 100px;
+        border: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+        #inputkartupanel{
+          background-color: white;
+          /* border: solid black 1px; */
+          margin-bottom: 20px !important;
+        }
+        #transactiondetailpanel{
+          background-color: white;
+          /* border: solid black 1px; */
+          margin-bottom: 20px !important;
+        }
+        #transactiondetailpanel .list .item{
+          border-bottom: 1px solid #5899d3;
+        }
+        #transactiondetailpanel .list .item .header{
+          color: #7b7c7c;
+          margin-bottom: 5px;
+        }
+        #transactiondetailpanel .list .item .content{
+          margin-bottom: 5px;
+        }
+        #headerdetailtransaction{
+          color: #2d5697;
+        }
+        #footertitle{
+          color: white;
+        }
+
+        .main-wrap {
+          position: absolute;
+      top: calc(50vh - 30px);
+      left: calc(50% - 60px);
+  }
+
+        .loader{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: relative;
+    margin: 0 auto;
+  }
+
+    /* LOADER 1 */
+
+    #loader-1:before, #loader-1:after{
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      border: 10px solid transparent;
+      border-top-color: #3498db;
+    }
+
+    #loader-1:before{
+      z-index: 100;
+      animation: spin 1s infinite;
+    }
+
+    #loader-1:after{
+      border: 10px solid #ccc;
+    }
+
+    @keyframes spin{
+      0%{
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100%{
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+      </style>
+      <title>Plink Direct Debit Dashboard</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root"><div class="main-wrap"><div class="loader" id="loader-1"></div></div></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +207,86 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- jQuery 3 -->
+    <script src="%PUBLIC_URL%/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="%PUBLIC_URL%/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="%PUBLIC_URL%/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Select2 -->
+    <script src="%PUBLIC_URL%/bower_components/select2/dist/js/select2.full.min.js"></script>
+    <!-- FastClick -->
+    <script src="%PUBLIC_URL%/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="%PUBLIC_URL%/dist/js/adminlte.min.js"></script>
+    <!-- Sparkline -->
+    <script src="%PUBLIC_URL%/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap  -->
+    <script src="%PUBLIC_URL%/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="%PUBLIC_URL%/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- SlimScroll -->
+    <script src="%PUBLIC_URL%/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- ChartJS -->
+    <script src="%PUBLIC_URL%/bower_components/chart.js/Chart.js"></script>
+    <!-- iCheck -->
+    <script src="%PUBLIC_URL%/plugins/iCheck/icheck.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script>
+      // window.MerchantCreatePageComponentComponentWillMount = function () {
+      //   $('body').attr('class', 'hold-transition skin-blue sidebar-mini');
+      //   console.log('MerchantCreatePageComponentComponentWillMount')
+      // }
+      // window.MerchantCreatePageComponentComponentDidMount = function () {
+      //   $('body').attr('class', 'hold-transition skin-blue sidebar-mini');
+      //   $('.select2').select2()
+      //   console.log('MerchantCreatePageComponentComponentDidMount')
+      // }
+      // window.HomePageComponent = function () {
+      //   $('body').attr('class', 'hold-transition skin-blue sidebar-mini');
+      // }
+      // window.LoginPageComponent = function () {
+      //   $('body').attr('class', 'hold-transition login-page');
+      //   $('input').iCheck({
+      //     checkboxClass: 'icheckbox_square-blue',
+      //     radioClass: 'iradio_square-blue',
+      //     increaseArea: '20%' /* optional */
+      //   });
+      // }
+      window.SignupPageComponent = function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+            });
+      }
+      window.collapseBoxRefresh = function () {
+        // $(element).parents('.box').boxWidget(); 
+        $('div.box [data-widget]').parents('.box').boxWidget();
+      }
+      window.TransactionListPageComponent = function (dataSet) {
+        // console.log('TransactionListPageComponent execute')
+      }
+      window.recallDatePicker = function (cb) {
+        window['mbddvalue-transactionStartDate'] = ''
+        window['mbddvalue-transactionEndDate'] = ''
+        $('#transactionStartDate').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd'
+        }).on('changeDate', function(e){
+          // console.log('changeDate==>', e)
+          // console.log('changeDate==>', e.date)
+          window['mbddvalue-transactionStartDate'] = e.date
+          // cb({transactionStartDate: e.date})
+        })
+        $('#transactionEndDate').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd'
+        }).on('changeDate', function(e){
+          // console.log('changeDate==>', e.date)
+          window['mbddvalue-transactionEndDate'] = e.date
+          // cb({transactionEndDate: e.date})
+        })
+      }
+    </script>
   </body>
 </html>
