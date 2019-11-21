@@ -37,6 +37,7 @@ class SidebarMerchantAdmin extends Component {
             </span>
           </Link>
           <ul className='treeview-menu'>
+            {this.props.getMenuLi('/report', 'Payment Report')}
             {this.props.getMenuLi('/transaction/refund-request', 'Refund Request')}
             {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')}
           </ul>

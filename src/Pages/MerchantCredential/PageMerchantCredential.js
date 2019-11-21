@@ -1,46 +1,42 @@
 import React, { Component } from 'react'
 import {path} from 'ramda'
 import Helmet from 'react-helmet'
-import { Redirect } from 'react-router-dom'
-import {getAccessToken} from '../../Utils/Utils'
-import MerchantInfo from '../../Containers/Merchant/MerchantInfo'
-import AppConfig from '../../Config/AppConfig'
-const basePath = AppConfig.basePath
+import MerchantCredentialInfo from '../../Containers/Merchant/MerchantCredentialInfo'
+import LoginCheck from '../../Containers/Login/LoginCheck'
 
-class MerchantProfilePageComp extends Component {
+class PageMerchantCredential extends Component {
   render () {
     console.log('render')
     return (
       <div className='content-wrapper'>
+        <LoginCheck />
         <Helmet>
-          <title>Merchant Profile</title>
+          <title>Merchant Credential</title>
           <body className='hold-transition skin-blue sidebar-mini' />
         </Helmet>
         <section className='content-header'>
-          <h1>Merchant Profile</h1>
+          <h1>Merchant Credential</h1>
           <ol className='breadcrumb'>
             <li>
               <a href='#'>
                 <i className='fa fa-dashboard' /> Merchant
               </a>
             </li>
-            <li className='active'>Merchant Profile</li>
+            <li className='active'>Merchant Credential</li>
           </ol>
         </section>
         <section className='content'>
           <form onSubmit={e => this._onSubmitForm(e)}>
             <div className='box box-primary'>
               <div className='box-header with-border'>
-                <h3 className='box-title'>Merchant Information</h3>
+                <h3 className='box-title'>Merchant Credential</h3>
               </div>
               <div className='box-body'>
-                <MerchantInfo />
+                <MerchantCredentialInfo />
               </div>
-
               <div className='box-footer'>
-                {/* <button type='button' className='btn btn-primary' onClick={(e) => <Redirect to={`${basePath}/edit-profile/${getAccessToken(this.props.sessionToken)}`} />}> */}
-                {/* <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
-                  Edit Profile
+                {/* <button type='submit' className='btn btn-primary'>
+                  Submit
                 </button> */}
                 {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
               </div>
@@ -51,4 +47,4 @@ class MerchantProfilePageComp extends Component {
     )
   }
 }
-export default MerchantProfilePageComp
+export default PageMerchantCredential

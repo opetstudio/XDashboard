@@ -31,17 +31,18 @@ class SidebarMerchantSupport extends Component {
         <li className='active treeview menu-open'>
           <Link to='#'>
             <i className='fa fa-bar-chart text-teal' />
-            <span>Refund Transaction</span>
+            <span>Transaction</span>
             <span className='pull-right-container'>
               <i className='fa fa-angle-left pull-right' />
             </span>
           </Link>
           <ul className='treeview-menu'>
+            {this.props.getMenuLi('/report', 'Payment Report')}
             {this.props.getMenuLi('/transaction/refund-request', 'Refund Request')}
             {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')}
           </ul>
         </li>
-        {this.props.getMenuLiSingle('/report', 'Report', 'fa fa-table text-aqua')}
+        {/* {this.props.getMenuLiSingle('/report', 'Report', 'fa fa-table text-aqua')} */}
         <li className='active treeview menu-open'>
           <Link to='#'>
             <i className='fa fa-user text-yellow' /> <span>User Support</span>

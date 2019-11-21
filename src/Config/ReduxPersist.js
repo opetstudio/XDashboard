@@ -3,11 +3,10 @@ import immutablePersistenceTransform from '../Services/ImmutablePersistenceTrans
 import AppConfig from './AppConfig'
 import {setSession, getSession} from '../Utils/Utils'
 
-
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
   active: true,
-  reducerVersion: '260',
+  reducerVersion: '261',
   storeConfig: {
     key: 'root',
     storage: storage, // Come back and replace this at some point
