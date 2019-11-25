@@ -148,5 +148,15 @@ export default {
         responseDescription: 'SUCCESS'
       }
     }
+  },
+  dashbaordFetch: () => {
+    return {
+      ok: true,
+      data: {
+        responseCode: 'MBDD00',
+        responseMessage: 'SUCCESS',
+        responseDescription: 'SUCCESS'
+      }
+    }
   }
 }

@@ -17,6 +17,7 @@ import { TransactionTypes } from '../Containers/Transaction/redux'
 import { PaymentgwTypes } from '../Containers/Paymentgw/redux'
 import { UserTypes } from '../Containers/User/redux'
 import { TablepaginationTypes } from '../Containers/TablePagination/redux'
+import { DashboardTypes } from '../Containers/Dashboard/redux'
 
 // begin Ignite-Entity-Paymentpage
 // import { PaymentpageTypes } from '../Containers/Paymentpage/redux'
@@ -50,6 +51,7 @@ import {transactionFetchOne, transactionRefundFetchOne, transactionRefundRequest
 import {userCreateRequest, userReadRequest} from '../Containers/User/sagas'
 import {paymentgwCreateRequest, paymentgwReadRequest} from '../Containers/Paymentgw/sagas'
 import {tablepaginationReadRequest, tablepaginationFetchAllUser, tablepaginationFetchAllTrxForRefundRequest, tablepaginationFetchAllTrxForRefundReview} from '../Containers/TablePagination/sagas'
+import { dashbaordFetch } from '../Containers/Dashboard/sagas'
 
 // begin Ignite-Entity-Paymentpage
 // import { paymentpageRequest } from '../Containers/Paymentpage/sagas'
@@ -102,6 +104,8 @@ const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBac
 
 export default function * root () {
   yield all([
+    takeLatest(DashboardTypes.DASHBOARD_FETCH, dashbaordFetch, apiDashboard),
+
     takeLatest(UserTypes.USER_CREATE_REQUEST, userCreateRequest, apiDashboard),
     takeLatest(UserTypes.USER_READ_REQUEST, userReadRequest, apiDashboard),
     

@@ -3,18 +3,32 @@ import Helmet from 'react-helmet'
 import { Line } from 'react-chartjs-2'
 import LoginCheck from '../../Containers/Login/LoginCheck'
 
-var salesChartData = {
+const paymentSuccessData = [65, 59, 80, 81, 56, 55, 40]
+const paymentRejectData = [28, 48, 40, 19, 86, 27, 90]
+const transactionPerMonth = 600
+const totalAmountTransaction = 230025120
+const totalAmountToday = 1000000
+const transactionStatusPerMonth = {
+  success: 300,
+  pending: 10,
+  reject: 190,
+  refundSuccess: 20,
+  refundPending: 40,
+  refundReject: 40
+}
+
+const salesChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-      label: 'Electronics',
+      label: 'Payment Success',
       // fillColor: 'rgb(210, 214, 222)',
       // strokeColor: 'rgb(210, 214, 222)',
       // pointBackgroundColor: 'rgb(210, 214, 222)',
       // pointStrokeColor: '#c1c7d1',
       // pointHighlightFill: '#fff',
       // pointHighlightStroke: 'rgb(220,220,220)',
-      data: [65, 59, 80, 81, 56, 55, 40],
+      data: paymentSuccessData,
       backgroundColor: [
         // 'rgba(255, 99, 132, 0.2)',
         // 'rgba(54, 162, 235, 0.2)',
@@ -24,31 +38,37 @@ var salesChartData = {
         // 'rgba(255, 159, 64, 0.2)'
       ],
       borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'green'
+        // 'rgba(255, 99, 132, 1)',
+        // 'rgba(54, 162, 235, 1)',
+        // 'rgba(255, 206, 86, 1)',
+        // 'rgba(75, 192, 192, 1)',
+        // 'rgba(153, 102, 255, 1)',
+        // 'rgba(255, 159, 64, 1)'
       ],
-      borderWidth: 1
+      borderWidth: 3
     },
     {
-      label: 'Digital Goods',
+      label: 'Refund Success',
       // fillColor: 'rgba(60,141,188,0.9)',
       // strokeColor: 'rgba(60,141,188,0.8)',
       // pointBackgroundColor: '#3b8bba',
       // pointStrokeColor: 'rgba(60,141,188,1)',
       // pointHighlightFill: '#fff',
       // pointHighlightStroke: 'rgba(60,141,188,1)',
-      data: [28, 48, 40, 19, 86, 27, 90],
+      data: paymentRejectData,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
+        // 'red'
+        // 'rgba(255, 99, 132, 0.2)',
         // 'rgba(54, 162, 235, 0.2)',
         // 'rgba(255, 206, 86, 0.2)',
         // 'rgba(75, 192, 192, 0.2)',
         // 'rgba(153, 102, 255, 0.2)'
         // 'rgba(255, 159, 64, 0.2)'
+      ],
+      borderWidth: 3,
+      borderColor: [
+        'red'
       ]
     }
   ]
@@ -122,7 +142,7 @@ class PageHome extends Component {
                 <span className='info-box-icon bg-aqua'><i className='fa fa-xl fa-line-chart color-blue' /></span>
                 <div className='info-box-content'>
                   <span className='info-box-text'>Transaction Per Month</span>
-                  <span className='info-box-number'>640<small /></span>
+                  <span className='info-box-number'>{transactionPerMonth}<small /></span>
                 </div>
                 {/* /.info-box-content */}
               </div>
@@ -134,7 +154,7 @@ class PageHome extends Component {
                 <span className='info-box-icon bg-green'><i className='fa fa-xl fa-money color-orange' /></span>
                 <div className='info-box-content'>
                   <span className='info-box-text'>Total Amount</span>
-                  <span className='info-box-number'>230.025.120</span>
+                  <span className='info-box-number'>{totalAmountTransaction}</span>
                 </div>
                 {/* /.info-box-content */}
               </div>
@@ -147,8 +167,8 @@ class PageHome extends Component {
               <div className='info-box'>
                 <span className='info-box-icon bg-red'><i className='fa fa-xl fa-university color-teal' /></span>
                 <div className='info-box-content'>
-                  <span className='info-box-text'>Bank Active</span>
-                  <span className='info-box-number'>3</span>
+                  <span className='info-box-text'>Total Amount Today</span>
+                  <span className='info-box-number'>{totalAmountToday}</span>
                 </div>
                 {/* /.info-box-content */}
               </div>
@@ -169,7 +189,7 @@ class PageHome extends Component {
                   <div className='row'>
                     <div className='col-md-8'>
                       <p className='text-center'>
-                        <strong>Sales: 1 January, 2019 - 1 July, 2019</strong>
+                        <strong>Transaction Success: 1 January, 2019 - 1 July, 2019</strong>
                       </p>
                       <div className='chart'>
                         {/* Sales Chart Canvas */}
@@ -184,50 +204,50 @@ class PageHome extends Component {
                     {/* /.col */}
                     <div className='col-md-4'>
                       <p className='text-center'>
-                        <strong>Transaction Status</strong>
+                        <strong>Transaction Status Per Month</strong>
                       </p>
                       <div className='progress-group'>
-                        <span className='progress-text'>Setled</span>
-                        <span className='progress-number'><b>590</b></span>
+                        <span className='progress-text'>Settled</span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.success}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-green' style={{width: '88%'}} />
+                          <div className='progress-bar progress-bar-green' style={{ width: `${50}%` }} />
                         </div>
                       </div>
                       {/* /.progress-group */}
                       <div className='progress-group'>
                         <span className='progress-text'>Pending</span>
-                        <span className='progress-number'><b>30</b></span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.pending}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-warning' style={{width: '10%'}} />
+                          <div className='progress-bar progress-bar-warning' style={{ width: `${transactionStatusPerMonth.success / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       {/* /.progress-group */}
                       <div className='progress-group'>
                         <span className='progress-text'>Reject</span>
-                        <span className='progress-number'><b>20</b></span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.reject}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-red' style={{width: '5%'}} />
+                          <div className='progress-bar progress-bar-red' style={{ width: `${transactionStatusPerMonth.reject / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
                         <span className='progress-text'>Refund Request</span>
-                        <span className='progress-number'><b>20</b></span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.refundPending}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-warning' style={{width: '5%'}} />
+                          <div className='progress-bar progress-bar-warning' style={{ width: `${transactionStatusPerMonth.refundPending / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
                         <span className='progress-text'>Refund Approved</span>
-                        <span className='progress-number'><b>20</b></span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.refundSuccess}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-green' style={{width: '5%'}} />
+                          <div className='progress-bar progress-bar-green' style={{ width: `${transactionStatusPerMonth.refundSuccess / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
                         <span className='progress-text'>Refund Rejected</span>
-                        <span className='progress-number'><b>20</b></span>
+                        <span className='progress-number'><b>{transactionStatusPerMonth.refundReject}</b></span>
                         <div className='progress sm'>
-                          <div className='progress-bar progress-bar-red' style={{width: '5%'}} />
+                          <div className='progress-bar progress-bar-red' style={{ width: `${transactionStatusPerMonth.refundReject / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                     </div>
