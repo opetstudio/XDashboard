@@ -18,6 +18,7 @@ import { PaymentgwTypes } from '../Containers/Paymentgw/redux'
 import { UserTypes } from '../Containers/User/redux'
 import { TablepaginationTypes } from '../Containers/TablePagination/redux'
 import { DashboardTypes } from '../Containers/Dashboard/redux'
+import { BankTypes } from '../Containers/Bank/redux'
 
 // begin Ignite-Entity-Paymentpage
 // import { PaymentpageTypes } from '../Containers/Paymentpage/redux'
@@ -52,6 +53,7 @@ import {userCreateRequest, userReadRequest} from '../Containers/User/sagas'
 import {paymentgwCreateRequest, paymentgwReadRequest} from '../Containers/Paymentgw/sagas'
 import {tablepaginationReadRequest, tablepaginationFetchAllUser, tablepaginationFetchAllTrxForRefundRequest, tablepaginationFetchAllTrxForRefundReview} from '../Containers/TablePagination/sagas'
 import { dashbaordFetch } from '../Containers/Dashboard/sagas'
+import { bankFetchCredential } from '../Containers/Bank/sagas'
 
 // begin Ignite-Entity-Paymentpage
 // import { paymentpageRequest } from '../Containers/Paymentpage/sagas'
@@ -86,8 +88,9 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'http://localhost:8762/dashboard-api/')
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'http://188.166.198.144:8762/dashboard-api/')
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'https://dev-directdebit.plink.co.id/dashboard-api/')
-const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'http://159.65.131.214:30397'
+const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8280' : 'http://159.65.131.214:30397'
 // const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'https://api.erevnaraya.com'
+
 const apiDashboard = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '/dashboard-api/')
 const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '/dashboard-api/py/')
 // const apiDashboardPy = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/py/' : 'http://188.166.198.144:8762/dashboard-api/py/')
@@ -104,10 +107,11 @@ const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBac
 
 export default function * root () {
   yield all([
+    takeLatest(BankTypes.BANK_FETCH_CREDENTIAL, bankFetchCredential, apiDashboard),
     takeLatest(DashboardTypes.DASHBOARD_FETCH, dashbaordFetch, apiDashboard),
 
-    takeLatest(UserTypes.USER_CREATE_REQUEST, userCreateRequest, apiDashboard),
-    takeLatest(UserTypes.USER_READ_REQUEST, userReadRequest, apiDashboard),
+    takeLatest(UserTypes.USER_CREATE_REQUEST, userCreateRequest, API.create(hostBackend + '/dashboard/')),
+    takeLatest(UserTypes.USER_READ_REQUEST, userReadRequest, API.create(hostBackend + '/dashboard/')),
     
     takeLatest(TransactionTypes.TRANSACTION_FETCH_ONE, transactionFetchOne, apiDashboardPy),
     takeLatest(TransactionTypes.TRANSACTION_REFUND_FETCH_ONE, transactionRefundFetchOne, apiDashboardPy),

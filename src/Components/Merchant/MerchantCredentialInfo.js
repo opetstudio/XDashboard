@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Colors} from '../../Themes'
+import { Colors } from '../../Themes'
 import Loader from '../Loader/Loader'
 import Moment from 'moment'
 import _ from 'lodash'
@@ -10,20 +10,23 @@ export default class MerchantCredentialInfo extends Component {
       !_.isEqual(prevProps.userMerchantCode, this.props.userMerchantCode) &&
       !_.isEmpty(this.props.userMerchantCode)
     ) {
-      this.props.merchantGetCredential({userMerchantCode: this.props.userMerchantCode})
+      this.props.merchantGetCredential({ userMerchantCode: this.props.userMerchantCode })
     }
   }
+
   componentWillMount () {
-    if (!_.isEmpty(this.props.userMerchantCode)) this.props.merchantGetCredential({userMerchantCode: this.props.userMerchantCode})
+    if (!_.isEmpty(this.props.userMerchantCode)) this.props.merchantGetCredential({ userMerchantCode: this.props.userMerchantCode })
   }
+
   render () {
     console.log('render')
-    let {
+    const {
       keyId,
       merchantId,
       merchantSecretKey,
       validFrom,
       validTo,
+      publicKey,
       remark,
       updatedDate,
       frontendCallbackUrl,
@@ -46,6 +49,8 @@ export default class MerchantCredentialInfo extends Component {
         <dd>{backendCallbackUrl}</dd>
         <dt>Current Secret Key</dt>
         <dd>{merchantSecretKey}</dd>
+        <dt>RSA Key</dt>
+        <dd>{publicKey}</dd>
         <dt>Valid From</dt>
         <dd>{Moment(validFrom).format('YYYY-MM-DD hh:mm:ss')}</dd>
         <dt>Valid To</dt>

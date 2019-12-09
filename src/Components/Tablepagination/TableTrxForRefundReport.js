@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import TableContent from './TableContent'
 import _ from 'lodash'
-class TableTrxForRefundReview extends Component {
+class TableTrxForRefundReport extends Component {
   componentDidUpdate (prevProps, prevState) {
     if (
       !_.isEqual(prevProps.userMerchantCode, this.props.userMerchantCode) &&
       !_.isEmpty(this.props.userMerchantCode)
     ) {
-      this.props.tablepaginationFetchAllTrxForRefundReview({})
+      this.props.tablepaginationFetchAllTrxForRefundRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode })
     }
   }
 
@@ -21,9 +21,9 @@ class TableTrxForRefundReview extends Component {
         pages={this.props.pages}
         pageSize={this.props.pageSize}
         loading={this.props.isRequesting}
-        requestData={(d) => this.props.tablepaginationFetchAllTrxForRefundReview({ ...d })}
+        requestData={(d) => this.props.tablepaginationFetchAllTrxForRefundRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode, ...d })}
       />
     )
   }
 }
-export default TableTrxForRefundReview
+export default TableTrxForRefundReport

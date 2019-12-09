@@ -15,6 +15,7 @@ var sha256 = require('crypto-js/sha256')
 var EncUtf8 = require('crypto-js/enc-utf8')
 
 const userPriv = {
+  '500': 'Bank',
   '400': 'Customer',
   '310': 'Merchant Support',
   '300': 'Merchant Admin',

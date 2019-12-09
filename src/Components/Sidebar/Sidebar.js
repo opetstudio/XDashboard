@@ -9,6 +9,7 @@ import SidebarMerchantAdmin from './SidebarMerchantAdmin'
 import SidebarMerchantSupport from './SidebarMerchantSupport'
 import SidebarUser from './SidebarUser'
 import SidebarOperator from './SidebarOperator'
+import SidebarBank from './SidebarBank'
 import { getPage } from '../../Utils/Pages'
 
 const basePath = AppConfig.basePath
@@ -48,6 +49,14 @@ class Sidebar extends Component {
     return (
       <aside className='main-sidebar'>
         <section className='sidebar'>
+          {(this.props.userRole >= 500 && this.props.userRole < 600) &&
+            <SidebarBank
+              getMenuLiSingle={this._getMenuLiSingle}
+              getMenuLi={this._getMenuLi}
+              appPatch={this.props.appPatch}
+              sessionToken={this.props.sessionToken}
+              routeActive={this.props.routeActive}
+            />}
           {(this.props.userRole >= 400 && this.props.userRole < 500) &&
             <SidebarOperator
               getMenuLiSingle={this._getMenuLiSingle}

@@ -30,7 +30,7 @@ export default {
         publicToken: 'YYYY',
         user: {
           userFullname: 'Nofrets Poai',
-          userRole: '300',
+          userRole: '500',
           merchantCode: '000000070070070',
           merchantId: '8afb8b146d7212fa016d721bb5970005'
         }
@@ -67,12 +67,33 @@ export default {
           keyId: 'keyIdxxxx',
           merchantId: '8afb8b146d7212fa016d721bb5970005',
           merchantSecretKey: 'xxxxxxxmerchantSecretKey',
+          publicKey: 'adfadfasdfasdfasfdsfdfadsfadsfdfdfdfdfdf',
           validFrom: '2019-10-10 13:00:00',
           validTo: '2019-12-10 13:00:00',
           remark: 'xxxremark',
           updatedDate: '2019-10-10 13:00:00',
           frontendCallbackUrl: 'http://frontend.tokotok.com',
           backendCallbackUrl: 'http://backend.tokotok.com'
+        }
+      }
+    }
+  },
+  bankFetchCredential: () => {
+    return {
+      ok: true,
+      data: {
+        responseCode: 'MBDD00',
+        responseMessage: 'SUCCESS',
+        responseDescription: 'SUCCESS',
+        data: {
+          apiKey: 'keyIdxxxxyyyyy',
+          bankSecretKey: 'xxxxxxxmerchantSecretKey',
+          publicKey: 'xasdfasdfasdf',
+          validFrom: '2019-10-10 13:00:00',
+          validTo: '2019-12-10 13:00:00',
+          remark: 'xxxremark',
+          updatedDate: '2019-10-10 13:00:00',
+          callbackUrl: 'http://directdebit.plink.co.id'
         }
       }
     }

@@ -16,6 +16,7 @@ class TransactionListPageComponent extends Component {
     }
     // window.TransactionListPageComponent()
   }
+
   componentDidMount () {
     console.log('componentDidMount')
     // this.props.transactionReadRequest({})
@@ -31,15 +32,17 @@ class TransactionListPageComponent extends Component {
     // window.TransactionListPageComponent([])
     // this.props.tablepaginationReadRequest({url: this.props.url, userMerchantCode: this.props.userMerchantCode})
   }
+
   componentDidUpdate (prevProps, prevState) {
     // window.TransactionListPageComponent(this.props.listall)
     if (
       !_.isEqual(prevProps.userMerchantCode, this.props.userMerchantCode) &&
       !_.isEmpty(this.props.userMerchantCode)
     ) {
-      this.props.tablepaginationReadRequest({url: this.props.url, userMerchantCode: this.props.userMerchantCode})
+      this.props.tablepaginationReadRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode })
     }
   }
+
   render () {
     console.log('render')
     // console.log('render table pagination===>', this.props)
@@ -51,7 +54,7 @@ class TransactionListPageComponent extends Component {
         pages={this.props.pages}
         pageSize={this.props.pageSize}
         loading={this.props.isRequesting}
-        requestData={(d) => this.props.tablepaginationReadRequest({url: this.props.url, userMerchantCode: this.props.userMerchantCode, ...d})}
+        requestData={(d) => this.props.tablepaginationReadRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode, ...d })}
       />
     )
   }

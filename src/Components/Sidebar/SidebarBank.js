@@ -15,7 +15,7 @@ class SidebarMerchantSupport extends Component {
       <ul className='sidebar-menu' data-widget='tree'>
         <li className='header'>MAIN NAVIGATION</li>
         {this.props.getMenuLiSingle('/home', 'Dashboard', 'fa fa-dashboard')}
-        <li className='active treeview menu-open'>
+        {/* <li className='active treeview menu-open'>
           <Link to='#'>
             <i className='fa fa-briefcase text-green' /> <span>Merchant Administration</span>
             <span className='pull-right-container'>
@@ -26,6 +26,17 @@ class SidebarMerchantSupport extends Component {
             {this.props.getMenuLi('/merchant/profile', 'Merchant Profile')}
             {this.props.getMenuLi('/merchant/credential', 'Merchant Credential')}
             {this.props.getMenuLi('/merchant/view-limit', 'Merchant Limit')}
+          </ul>
+        </li> */}
+        <li className='active treeview menu-open'>
+          <Link to='#'>
+            <i className='fa fa-briefcase text-green' /> <span>Bank Administration</span>
+            <span className='pull-right-container'>
+              <i className='fa fa-angle-left pull-right' />
+            </span>
+          </Link>
+          <ul className='treeview-menu'>
+            {this.props.getMenuLi('/bank/credential', 'Bank Credential')}
           </ul>
         </li>
         <li className='active treeview menu-open'>

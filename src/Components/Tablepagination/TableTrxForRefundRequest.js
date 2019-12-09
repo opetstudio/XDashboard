@@ -7,9 +7,10 @@ class TableTrxForRefundRequest extends Component {
       !_.isEqual(prevProps.userMerchantCode, this.props.userMerchantCode) &&
       !_.isEmpty(this.props.userMerchantCode)
     ) {
-      this.props.tablepaginationFetchAllTrxForRefundRequest({url: this.props.url, userMerchantCode: this.props.userMerchantCode})
+      this.props.tablepaginationFetchAllTrxForRefundRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode })
     }
   }
+
   render () {
     console.log('render')
     return (
@@ -20,7 +21,7 @@ class TableTrxForRefundRequest extends Component {
         pages={this.props.pages}
         pageSize={this.props.pageSize}
         loading={this.props.isRequesting}
-        requestData={(d) => this.props.tablepaginationFetchAllTrxForRefundRequest({url: this.props.url, userMerchantCode: this.props.userMerchantCode, ...d})}
+        requestData={(d) => this.props.tablepaginationFetchAllTrxForRefundRequest({ url: this.props.url, userMerchantCode: this.props.userMerchantCode, ...d })}
       />
     )
   }

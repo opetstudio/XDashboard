@@ -1,10 +1,10 @@
 import React from 'react'
 import Moment from 'moment'
 import AppConfig from '../Config/AppConfig'
-import {getAccessToken} from '../Utils/Utils'
+import { getAccessToken } from '../Utils/Utils'
 
 const basePath = AppConfig.basePath
-export const getTransactionColumn = ({history, sessionToken}) => {
+export const getTransactionColumn = ({ history, sessionToken }) => {
   return [{
     id: 'mercRefNo',
     Header: 'Merchant Ref. Number',
@@ -25,12 +25,12 @@ export const getTransactionColumn = ({history, sessionToken}) => {
     Header: 'Merchant Id',
     accessor: 'mercCd'
   },
-    // {
-    //   id: 'pymtMethodCd',
-    //   Header: 'Method',
-    //   accessor: 'pymtMethodCd',
-    //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-    // },
+  // {
+  //   id: 'pymtMethodCd',
+  //   Header: 'Method',
+  //   accessor: 'pymtMethodCd',
+  //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  // },
   {
     id: 'coCcyAmt', // Required because our accessor is not a string
     Header: 'Amount',
@@ -71,18 +71,18 @@ export const getTransactionColumn = ({history, sessionToken}) => {
   ]
 }
 // this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
-export const getTransactionForRefundColumn = ({history, sessionToken}) => {
+export const getTransactionForRefundColumn = ({ history, sessionToken }) => {
   return [{
     id: 'mercRefNo',
     Header: 'Merchant Ref. Number',
     accessor: 'mercRefNo' // String-based value accessors!
   },
-    // {
-    //   id: 'pymtMethodCd',
-    //   Header: 'Method',
-    //   accessor: 'pymtMethodCd',
-    //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-    // },
+  // {
+  //   id: 'pymtMethodCd',
+  //   Header: 'Method',
+  //   accessor: 'pymtMethodCd',
+  //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  // },
   {
     id: 'coCcyAmt', // Required because our accessor is not a string
     Header: 'Amount',
@@ -113,18 +113,18 @@ export const getTransactionForRefundColumn = ({history, sessionToken}) => {
   }
   ]
 }
-export const getTransactionForReviewColumn = ({history, sessionToken}) => {
+export const getTransactionForReviewColumn = ({ history, sessionToken }) => {
   return [{
     id: 'mercRefNo',
     Header: 'Merchant Ref. Number',
     accessor: 'mercRefNo' // String-based value accessors!
   },
-    // {
-    //   id: 'pymtMethodCd',
-    //   Header: 'Method',
-    //   accessor: 'pymtMethodCd',
-    //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-    // },
+  // {
+  //   id: 'pymtMethodCd',
+  //   Header: 'Method',
+  //   accessor: 'pymtMethodCd',
+  //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  // },
   {
     id: 'coCcyAmt', // Required because our accessor is not a string
     Header: 'Amount',
@@ -160,40 +160,40 @@ export const getTransactionForReviewColumn = ({history, sessionToken}) => {
 
 export const getUserColumn = () => {
   return [{
-      id: 'userId',
-      Header: 'User Id',
-      accessor: 'userId' // String-based value accessors!
-    }, {
-      id: 'userFullname', // Required because our accessor is not a string
-      Header: 'Full Name',
-      accessor: d => d.userFullname, // Custom value accessors!,
-      Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-    }, {
-      id: 'email',
-      Header: props => <span>Email</span>, // Custom header components!
-      accessor: 'email'
-      // accessor: 'friend.age'
-    },
-    // {
-    //   Header: 'Group',
-    //   accessor: 'consUsernameMerchant'
-    // },
-    {
-      Header: 'Phone Number',
-      accessor: 'mobile'
-    }, {
-      Header: 'Address',
-      accessor: 'address'
-    }, {
-      Header: 'isLogin',
-      accessor: 'isLogin'
-    },
-    {
-      id: 'userId',
-      Header: 'Action',
-      accessor: d => d.userId,
-      Cell: props => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => {}}>Detail</button></div>
-      // Cell: p => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => {}}>Detail</button></div>
-    }
+    id: 'userId',
+    Header: 'User Id',
+    accessor: 'userId' // String-based value accessors!
+  }, {
+    id: 'userFullname', // Required because our accessor is not a string
+    Header: 'Full Name',
+    accessor: d => d.userFullname, // Custom value accessors!,
+    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  }, {
+    id: 'email',
+    Header: props => <span>Email</span>, // Custom header components!
+    accessor: 'email'
+    // accessor: 'friend.age'
+  },
+  // {
+  //   Header: 'Group',
+  //   accessor: 'consUsernameMerchant'
+  // },
+  {
+    Header: 'Phone Number',
+    accessor: 'mobile'
+  }, {
+    Header: 'Address',
+    accessor: 'address'
+  }, {
+    Header: 'isLogin',
+    accessor: 'isLogin'
+  },
+  {
+    id: 'userId',
+    Header: 'Action',
+    accessor: d => d.userId,
+    Cell: props => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => {}}>Detail</button></div>
+    // Cell: p => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => {}}>Detail</button></div>
+  }
   ]
 }

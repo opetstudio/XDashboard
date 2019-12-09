@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_JSP="prismalink-dashboard"
+PROJECT_JSP="mbdd-merchant"
 npm run build
 cp -rf build/manifest.json ~/workspace_java/$PROJECT_JSP/src/main/webapp/
 cp -rf build/static/* ~/workspace_java/$PROJECT_JSP/src/main/resources/static/static/

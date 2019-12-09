@@ -11,9 +11,10 @@ export default class TableContent extends Component {
       pages: null,
       loading: true
     }
-    this.fetchData = this.fetchData.bind(this)
+    this.handleFetchData = this.handleFetchData.bind(this)
   }
-  fetchData (state, instance) {
+
+  handleFetchData (state, instance) {
     // console.log('fetchData state:', state)
     if (this.props.loading) {
       // console.log('still fetching')
@@ -26,6 +27,7 @@ export default class TableContent extends Component {
       filtered: state.filtered
     })
   }
+
   render () {
     console.log('render')
     const { data, pages, loading, page, pageSize, columns } = this.props
@@ -38,7 +40,7 @@ export default class TableContent extends Component {
           page={page}
           pages={pages} // Display the total number of pages
           loading={loading} // Display the loading overlay when we need it
-          onFetchData={this.fetchData} // Request new data when things change
+          onFetchData={this.handleFetchData} // Request new data when things change
           filterable={false}
           defaultPageSize={pageSize}
           className='-striped -highlight'

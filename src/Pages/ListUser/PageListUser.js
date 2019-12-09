@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import ContentListUser from './ContentListUser'
+import LoginCheck from '../../Containers/Login/LoginCheck'
 class PageListUser extends Component {
   render () {
     console.log('render')
     console.log('props=====>', this.props)
     return (
       <div className='content-wrapper'>
+        <LoginCheck />
         <Helmet> <title>User Management</title></Helmet>
         <section className='content-header'>
           <h1>

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import FormCreateUser from './FormCreateUser'
+import LoginCheck from '../../Containers/Login/LoginCheck'
 
 class PageCreateUser extends Component {
   render () {
     console.log('render')
     return (
       <div className='content-wrapper'>
+        <LoginCheck />
         <Helmet>
           <title>Registrasi User</title>
           <body className='hold-transition skin-blue sidebar-mini' />

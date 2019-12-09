@@ -5,12 +5,14 @@ import TablepaginationActions, {TablepaginationSelectors} from './redux'
 import TablepaginationListPageComponent from '../../Components/Tablepagination/TablepaginationListPageComponent'
 import TablepaginationUser from '../../Components/Tablepagination/TablepaginationUser'
 import TableTrxForRefundRequest from '../../Components/Tablepagination/TableTrxForRefundRequest'
+import TableTrxForRefundReport from '../../Components/Tablepagination/TableTrxForRefundReport'
 import TableTrxForRefundReview from '../../Components/Tablepagination/TableTrxForRefundReview'
 
 class TheComponent extends React.PureComponent {
   render () {
     console.log('render')
     if (this.props.table === 'user') return (<TablepaginationUser {...this.props} />)
+    if (this.props.table === 'trxForRefundReport') return (<TableTrxForRefundReport {...this.props} />)
     if (this.props.table === 'trxForRefundRequest') return (<TableTrxForRefundRequest {...this.props} />)
     if (this.props.table === 'trxForRefundReview') return (<TableTrxForRefundReview {...this.props} />)
     return (<TablepaginationListPageComponent {...this.props} />

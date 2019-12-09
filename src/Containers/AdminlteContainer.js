@@ -6,24 +6,27 @@ import Helmet from 'react-helmet'
 import LoginActions, { LoginSelectors } from './Login/redux'
 import Header from '../Containers/Header/HeaderContainer'
 import Sidebar from '../Containers/Sidebar/SidebarContainer'
-import {isLoggedIn, getSession} from '../Utils/Utils'
+import { isLoggedIn, getSession } from '../Utils/Utils'
 import AppConfig from '../Config/AppConfig'
 
 class AdminlteContainer extends React.PureComponent {
   static propTypes = {
     onLogout: PropTypes.func
   }
+
   static defaultProps = {
     onLogout: () => {}
   }
+
   constructor (props) {
     super(props)
-    this.state = {isLoggedIn: this.props.isLoggedIn}
+    this.state = { isLoggedIn: this.props.isLoggedIn }
     // this.logoutDialog = this.logoutDialog.bind(this)
     // this.ModalBasic = this.ModalBasic.bind(this)
     this.renderLoggedIn = this.renderLoggedIn.bind(this)
     this.renderUnLoggedIn = this.renderUnLoggedIn.bind(this)
   }
+
   componentDidMount () {
     // console.log('AdminlteContainer.componentDidMount')
     // let listJs = [
@@ -50,10 +53,12 @@ class AdminlteContainer extends React.PureComponent {
     //   document.body.appendChild(script)
     // })
   }
+
   componentDidUpdate (prevProps, prevState) {
   }
+
   renderLoggedIn (children) {
-    let userRole = getSession('userRole')
+    const userRole = getSession('userRole')
     return (
       <div className='wrapper'>
         <Helmet>
@@ -62,30 +67,31 @@ class AdminlteContainer extends React.PureComponent {
         </Helmet>
         {(isLoggedIn(this.props.isLoggedIn) === true) && <Header userRole={userRole} />}
         {(isLoggedIn(this.props.isLoggedIn) === true) && <Sidebar userRole={userRole} />}
-        <div style={{minHeight: window.innerHeight - 200}}>{children}</div>
+        <div style={{ minHeight: window.innerHeight - 200 }}>{children}</div>
         {(isLoggedIn(this.props.isLoggedIn) === true) &&
-        <footer className='main-footer'>
-          <div className='pull-right hidden-xs'>
-            <b>Version</b> 0.0.1.1
-          </div>
-          <strong>Copyright &copy; 2019 <Link to='https://prismalink.co.id'>PT. Prismalink International</Link>.</strong> All rights
+          <footer className='main-footer'>
+            <div className='pull-right hidden-xs'>
+              <b>Version</b> 0.0.1.1
+            </div>
+            <strong>Copyright &copy; 2019 <Link to='https://prismalink.co.id'>PT. Prismalink International</Link>.</strong> All rights
             reserved.
-        </footer>
-        }
+          </footer>}
       </div>
     )
   }
+
   renderUnLoggedIn (children) {
-    let userRole = getSession('userRole')
+    const userRole = getSession('userRole')
     return (
       <div className='wrapper'>
-        <div style={{minHeight: window.innerHeight - 200}}>{children}</div>
+        <div style={{ minHeight: window.innerHeight - 200 }}>{children}</div>
       </div>
     )
   }
+
   render () {
     console.log('render window.location ', window.location.pathname)
-    let loc = window.location.pathname
+    const loc = window.location.pathname
     const { children } = this.props
     if (loc.startsWith(AppConfig.basePath + '/login-force')) return this.renderUnLoggedIn(children)
     // else return children
