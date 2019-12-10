@@ -54,6 +54,20 @@ class SidebarMerchantSupport extends Component {
             {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')}
           </ul>
         </li>
+        <li className='active treeview menu-open'>
+          <Link to='#'>
+            <i className='fa fa-bar-chart text-teal' />
+            <span>Reconciliation</span>
+            <span className='pull-right-container'>
+              <i className='fa fa-angle-left pull-right' />
+            </span>
+          </Link>
+          <ul className='treeview-menu'>
+            {this.props.getMenuLi('/transaction/refund-report', 'Refund Report')}
+            {this.props.getMenuLi('/transaction/refund-request', 'Refund Request')}
+            {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')}
+          </ul>
+        </li>
         {/* {this.props.getMenuLiSingle('/report', 'Report', 'fa fa-table text-aqua')} */}
         <li className='active treeview menu-open'>
           <Link to='#'>
