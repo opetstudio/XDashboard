@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { loadScript } from '../../Utils/Utils'
+import Moment from 'moment'
+import { loadScriptRecallDatePicker } from '../../Utils/Utils'
 
 export default class FilterTransaction extends Component {
   constructor (props) {
     super(props)
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.daterangeOnChange = this.daterangeOnChange.bind(this)
     this._resetFilter = this._resetFilter.bind(this)
   }
 
@@ -13,7 +15,13 @@ export default class FilterTransaction extends Component {
   }
 
   componentDidMount () {
-    loadScript(this.props.tablepaginationReadRequest)
+    loadScriptRecallDatePicker(this.daterangeOnChange)
+  }
+
+  daterangeOnChange (start, end) {
+    const filter = { transactionStartDate: new Date(parseInt(start)), transactionEndDate: new Date(parseInt(end)) }
+    console.log('filter ====>', filter)
+    this.props.tablepaginationReadRequestPatch(filter)
   }
 
   handleOnChange (e, f) {
@@ -50,31 +58,34 @@ export default class FilterTransaction extends Component {
     if (type === 'text' || type === 'number') {
       return (
         <div className='form-group'>
-          <label className='col-sm-3 control-label'>{label}</label> <div className='col-sm-9'>
-            <input type={type} className='form-control' id={id} placeholder={placeholder} ref={id} onChange={this.handleOnChange} value={this.props[id]} />
-          </div>
+          <label htmlFor={id}>{label}</label>
+          <input type={type} className='form-control' id={id} placeholder={placeholder} ref={id} onChange={this.handleOnChange} value={this.props[id]} />
         </div>
       )
     }
     if (type === 'datepicker') {
       return (
         <div className='form-group'>
-          <label className='col-sm-3 control-label'>{label}</label> <div className='col-sm-9'>
-            <div className='input-group date'>
-              <div className='input-group-addon'><i className='fa fa-calendar' /></div> <input type='text' className='form-control pull-right cok' id={id} ref={id} onChange={this.handleOnChange} value={this.props[id]} />
+          <label>{label}</label>
+          <div className='input-group'>
+            <div className='input-group-prepend'>
+              <span className='input-group-text'>
+                <i className='far fa-calendar-alt' />
+              </span>
             </div>
+            <input type='text' className='form-control float-right' id={id} ref={id} onChange={this.handleOnChange} value={this.props[id]} />
           </div>
+          {/* /.input group */}
         </div>
       )
     }
     if (type === 'select') {
       return (
         <div className='form-group'>
-          <label className='col-sm-3 control-label'>{label}</label> <div className='col-sm-9'>
-            <select className='form-control select2' style={{ width: '100%' }} ref={id} onChange={this.handleOnChange} defaultValue={this.props[id]}>
-              {options.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
-            </select>
-          </div>
+          <label htmlFor={id}>{label}</label>
+          <select className='form-control' style={{ width: '100%' }} ref={id} onChange={this.handleOnChange} defaultValue={this.props[id]}>
+            {options.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
+          </select>
         </div>
       )
     }
@@ -83,14 +94,17 @@ export default class FilterTransaction extends Component {
   render () {
     console.log('render')
     return (
-      <div className='box box-default'>
-        <div className='box-header with-border'>
-          <h3 className='box-title'>Transaction Filter</h3> <div className='box-tools pull-right'>
-            <button type='button' className='btn btn-box-tool' data-widget='collapse'><i className='fa fa-minus' /></button>
-            {/* <button type='button' className='btn btn-box-tool' data-widget='remove'><i className='fa fa-remove' /></button> */}
+      <form className='form' onSubmit={(e) => this._formOnSubmit(e)}>
+        <div className='card'>
+          <div className='card-header'>
+            <h5 className='card-title'>Transaction Filter</h5>
+            <div className='card-tools'>
+              <button id='myCardWidget' type='button' className='btn btn-tool' data-card-widget='collapse'>
+                <i className='fas fa-minus' />
+              </button>
+            </div>
           </div>
-        </div> <div className='box-body'>
-          <form className='form-horizontal' onSubmit={(e) => this._formOnSubmit(e)}>
+          <div className='card-body'>
             <div className='row'>
               <div className='col-md-6'>
                 {this._renderFormGroup('text', 'Merchant Ref. No', 'merchantRefNo', 'Merchant Ref No')}
@@ -98,32 +112,36 @@ export default class FilterTransaction extends Component {
                 {this._renderFormGroup('text', 'Merchant User Id', 'merchantUserId', 'Merchant User Id')}
                 {!this.props.withoutSof && this._renderFormGroup('select', 'Source Of Fund', 'sourceOfFund', 'Source Of Fund', [{ value: '', label: '-- select bank --' }, { value: 'bank-btpn', label: 'Jenius - Bank BTPN' }, { value: 'bank-cimb', label: 'Bank CIMB Niaga' }])}
                 {(this.props.userRole === '100' || this.props.userRole === '200' || this.props.userRole === '210' || this.props.userRole === '400') && this._renderFormGroup('number', 'Merchant Code', 'merchantCode', 'Merchant Code')}
-              </div> <div className='col-md-6'>
+              </div>
+              <div className='col-md-6'>
                 {!this.props.withoutStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'SETLD', label: 'Settle' }, { value: 'PNDNG', label: 'Pending' }, { value: 'REJEC', label: 'Reject' }])}
                 {this.props.withRefundStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'REFREQ', label: 'Refund Request' }, { value: 'REFAPP', label: 'Refund Approve' }, { value: 'REFREJ', label: 'Refund Reject' }])}
                 {this._renderFormGroup('number', 'Minimal Amount', 'transactionAmountMin', 'Minimal Amount')}
                 {this._renderFormGroup('number', 'Maximal Amount', 'transactionAmountMax', 'Maximal Amount')}
-                {this._renderFormGroup('datepicker', 'Start Date', 'transactionStartDate', 'Start Date')}
-                {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')}
-              </div>
-            </div> <div className='box-footer'>
-              <button type='submit' className='btn btn-info btn-flat'><i className='fa fa-search' />Search</button>|
-              <button type='button' className='btn btn-info btn-flat' onClick={this._resetFilter}><i className='fa fa-close' />Reset</button>|
-              <div class='btn-group'>
-                <button type='button' class='btn btn-warning btn-flat'>Download</button>
-                <button type='button' class='btn btn-warning btn-flat dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
-                  <span class='caret' />
-                  <span class='sr-only'>Toggle Dropdown</span>
-                </button>
-                <ul class='dropdown-menu' role='menu'>
-                  <li><a href='#'>Download CSV</a></li>
-                  <li><a href='#'>Download TXT</a></li>
-                </ul>
+                {this._renderFormGroup('datepicker', 'Range Date', 'transactionStartDate', 'Range Date')}
+                {/* {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')} */}
               </div>
             </div>
-          </form>
+          </div>
+          <div className='card-footer'>
+            <button type='submit' className='btn btn-info'>
+              <i className='fas fa-search' /> Search
+            </button>|
+            <button type='button' className='btn btn-info' onClick={this._resetFilter}><i className='fas fa-close' /> Reset</button>|
+            <div className='btn-group'>
+              <button type='button' className='btn btn-warning'>Download</button>
+              <button type='button' className='btn btn-warning dropdown-toggle dropdown-icon' data-toggle='dropdown'>
+                <span className='sr-only'>Toggle Dropdown</span>
+                <div className='dropdown-menu' role='menu'>
+                  <a className='dropdown-item' href='#'>Download CSV</a>
+                  <a className='dropdown-item' href='#'>Download TXT</a>
+                </div>
+              </button>
+            </div>
+          </div>
+
         </div>
-      </div>
+      </form>
     )
   }
 }

@@ -8,6 +8,7 @@ const images = {
   sslsecurity: require('../Images/sslsecurity.png'),
   plinkpayment: require('../Images/plinkpayment.png'),
   logorayapay: require('../Images/logorayapay.png'),
-  useravatar: require('../Images/user2-160x160.jpg')
+  useravatar: require('../Images/user2-160x160.jpg'),
+  AdminLTELogo: require('../Images/AdminLTELogo.png')
 }
 export default images

@@ -1,14 +1,14 @@
 // a library to wrap and simplify api calls
 import AppConfig from '../../Config/AppConfig'
-import {generateHmac} from '../../Utils/Utils'
+import { generateHmac, generateSha256 } from '../../Utils/Utils'
 
 export const create = api => ({
   loginDoLogin: (data, opt) => {
     console.log('loginDoLogin data=', data)
-    let body = {email: data.userid, password: data.password}
+    const body = { email: data.userid, password: data.password }
     console.log('body==>', JSON.stringify(body))
     api.setHeader('mac', generateHmac(JSON.stringify(body)))
-    const resp = api.post('/plink/login', {email: data.userid, password: data.password})
+    const resp = api.post('/plink/login', { email: data.userid, password: generateSha256(data.password) })
     return resp
   },
   postLogin: (data, opt) => {

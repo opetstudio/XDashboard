@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import ContentPaymentReport from './ContentPaymentReport'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 class PagePaymentReport extends Component {
   constructor (props) {
     super(props)
@@ -37,15 +38,12 @@ class PagePaymentReport extends Component {
         <LoginCheck />
         <Helmet>
           <title>Report</title>
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
-        <section className='content-header'>
-          <h1>
-            Report
-          </h1>
-          <ol className='breadcrumb'>
-            <li><a href='#'><i className='fa fa-dashboard' /> Report</a></li>
-          </ol>
-        </section>
+        <ContentHeader
+          title='Report'
+          breadcrumb={[{ title: 'Transaction', link: '#' }, { title: 'Payment Report', link: null, isActive: true }]}
+        />
         <ContentPaymentReport />
       </div>
     )

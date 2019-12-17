@@ -25,6 +25,7 @@ import PageRefundReport from '../Pages/RefundReport/PageRefundReport'
 import PageRefundReview from '../Pages/RefundReview/PageRefundReview'
 import LoginPageContainer from '../Pages/Login/PageLogin'
 import PageBankCredential from '../Pages/BankCredential/PageBankCredential'
+import PageReconReport from '../Pages/Reconciliation/PageReconReport'
 
 import UserChangeLimitPageContainer from '../Containers/User/ChangeLimitPageContainer'
 import PaymentgwCreatePageContainer from '../Containers/Paymentgw/PaymentgwCreatePageContainer'
@@ -56,6 +57,7 @@ const lp = {
   '/user/change-limit': { route: '/user/change-limit', path: '/user/change-limit/:sessionToken', component: UserChangeLimitPageContainer, role: '100,500,200,210,300,310,400' },
   '/user/list': { route: '/user/list', path: '/user/list/:sessionToken', component: PageListUser, role: '100,500,200,210,300,310,400' },
   '/report': { route: '/report', path: '/report/:sessionToken', component: PagePaymentReport, role: '100,500,200,210,300,310,400', title: 'Payment Report' },
+  '/reconciliation/recon-report': { route: '/report', path: '/reconciliation/recon-report/:sessionToken', component: PageReconReport, role: '100,500,200,210,300,310,400', title: 'Reconciliation Report' },
   '/report/detail': { route: '/report/detail', path: '/report/detail/:sessionToken', component: PageTrxDetail, role: '100,500,200,210,300,310,400', title: 'Transaction Detail' },
   '/report/detail-for-refund-request': { route: '/report/detail-for-refund-request', path: '/report/detail-for-refund-request/:sessionToken', component: PageTrxDetailForRefundRequest, role: '300,310', title: 'Transaction Detail For Refund Request' },
   '/report/detail-for-refund-review': { route: '/report/detail-for-refund-review', path: '/report/detail-for-refund-review/:sessionToken', component: PageTrxDetailForRefundReview, role: '300,310', title: 'Transaction Detail For Refund Request' },

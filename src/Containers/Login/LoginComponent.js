@@ -102,7 +102,7 @@ class LoginPageComponent extends React.Component {
         {!this.isEmptyOrNull(this.props.responseCode) && this.props.responseCode === 'MBDD00' &&
           (
             <div className='row'>
-              <div className='col-md-12'>
+              <div className='col-12'>
                 <div className='alert alert-success' role='alert'>
                   {this.props.responseDescription}
                 </div>
@@ -112,29 +112,40 @@ class LoginPageComponent extends React.Component {
         {!this.isEmptyOrNull(this.props.responseCode) && this.props.responseCode !== 'MBDD00' &&
           (
             <div className='row'>
-              <div className='col-md-12'>
+              <div className='col-12'>
                 <div className='alert alert-danger' role='alert'>
                   {this.props.responseDescription}
                 </div>
               </div>
             </div>
           )}
-        <div className='form-group has-feedback'>
+        <div className='input-group mb-3'>
           <input type='email' className='form-control' placeholder='Email' ref='email' required />
-          <span className='glyphicon glyphicon-envelope form-control-feedback' />
-        </div>
-        <div className='form-group has-feedback'>
-          <input type='password' className='form-control' placeholder='Password' ref='pass' required />
-          <span className='glyphicon glyphicon-lock form-control-feedback' />
-        </div>
-        <div className='row'>
-          <div className='col-xs-8'>
-            <div className='checkbox icheck'>
-              {/* <label><input type='checkbox' /> Remember Me </label> */}
+          <div className='input-group-append'>
+            <div className='input-group-text'>
+              <span className='fas fa-envelope' />
             </div>
           </div>
-          <div className='col-xs-4'>
-            {!this.props.isRequesting && <button type='submit' className='btn btn-primary btn-block btn-flat'>Sign In</button>}
+        </div>
+        <div className='input-group mb-3'>
+          <input type='password' className='form-control' placeholder='Password' ref='pass' required />
+          <div class='input-group-append'>
+            <div class='input-group-text'>
+              <span class='fas fa-lock' />
+            </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-8'>
+            <div className='icheck-primary'>
+              {/* <input type='checkbox' id='remember' />
+              <label for='remember'>
+                Remember Me
+              </label> */}
+            </div>
+          </div>
+          <div className='col-4'>
+            {!this.props.isRequesting && <button type='submit' className='btn btn-primary btn-block'>Sign In</button>}
             {this.props.isRequesting && <Loader loading />}
             {/* <button type='button' className='btn btn-primary btn-block btn-flat' onClick={() => this.handleSubmit()}>Sign In</button> */}
           </div>

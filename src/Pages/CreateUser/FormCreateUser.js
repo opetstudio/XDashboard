@@ -28,97 +28,104 @@ class FormCreateUser extends Component {
     console.log('render')
     return (
       <section className='content'>
-        <form onSubmit={e => this._onSubmitForm(e)}>
-          <div className='box box-primary'>
-            <div className='box-header with-border'>
-              <h3 className='box-title'>User Information</h3>
-            </div>
-            <div className='box-body'>
-              {this.props.responseCode !== '' &&
-              this.props.responseCode === 'MBDD00' && (
-                <div className='row'>
-                  <div className='col-md-12'>
-                    <div className='alert alert-success' role='alert'>
-                      {this.props.responseDescription}
+        <div className='container-fluid'>
+          <form onSubmit={e => this._onSubmitForm(e)}>
+            <div className='card'>
+              <div className='card-header'>
+                <h3 className='card-title'>User Information</h3>
+                <div className='card-tools'>
+                  <button id='myCardWidget' type='button' className='btn btn-tool' data-card-widget='collapse'>
+                    <i className='fas fa-minus' />
+                  </button>
+                </div>
+              </div>
+              <div className='card-body'>
+                {this.props.responseCode !== '' &&
+                this.props.responseCode === 'MBDD00' && (
+                  <div className='row'>
+                    <div className='col-md-12'>
+                      <div className='alert alert-success' role='alert'>
+                        {this.props.responseDescription}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-              {this.props.responseCode !== '' &&
-              this.props.responseCode !== 'MBDD00' && (
-                <div className='row'>
-                  <div className='col-md-12'>
-                    <div className='alert alert-danger' role='alert'>
-                      {this.props.responseDescription}
+                )}
+                {this.props.responseCode !== '' &&
+                this.props.responseCode !== 'MBDD00' && (
+                  <div className='row'>
+                    <div className='col-md-12'>
+                      <div className='alert alert-danger' role='alert'>
+                        {this.props.responseDescription}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-              <div className='row'>
-                <div className='col-md-12'>
-                  <div className='box-body'>
+                )}
+                <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='box-body'>
 
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputPassword1'>Full Name</label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='userFullname'
-                        placeholder='Enter User Full Name'
-                        ref='userFullname'
-                      />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputEmail1'>Email Address</label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='email'
-                        placeholder='Enter email'
-                        ref='email'
-                      />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputPassword1'>Mobile Phone Number</label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='mobile'
-                        placeholder='Enter Phone Number'
-                        ref='mobile'
-                      />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='exampleInputEmail1'>Password</label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='userPassword'
-                        placeholder='Enter User Password'
-                        ref='userPassword'
-                      />
-                    </div>
-                    <div className='form-group'>
-                      <label>Address</label>
-                      <textarea
-                        className='form-control'
-                        rows='3'
-                        placeholder='Enter Address'
-                        ref='address'
-                      />
+                      <div className='form-group'>
+                        <label htmlFor='exampleInputPassword1'>Full Name</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='userFullname'
+                          placeholder='Enter User Full Name'
+                          ref='userFullname'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='exampleInputEmail1'>Email Address</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='email'
+                          placeholder='Enter email'
+                          ref='email'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='exampleInputPassword1'>Mobile Phone Number</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='mobile'
+                          placeholder='Enter Phone Number'
+                          ref='mobile'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='exampleInputEmail1'>Password</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='userPassword'
+                          placeholder='Enter User Password'
+                          ref='userPassword'
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label>Address</label>
+                        <textarea
+                          className='form-control'
+                          rows='3'
+                          placeholder='Enter Address'
+                          ref='address'
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className='card-footer'>
+                <button type='submit' className='btn btn-primary'>
+                Submit
+                </button>
+                {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
+              </div>
             </div>
-            <div className='box-footer'>
-              <button type='submit' className='btn btn-primary'>
-              Submit
-              </button>
-              {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
     )
   }

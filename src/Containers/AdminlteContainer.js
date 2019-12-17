@@ -8,6 +8,7 @@ import Header from '../Containers/Header/HeaderContainer'
 import Sidebar from '../Containers/Sidebar/SidebarContainer'
 import { isLoggedIn, getSession } from '../Utils/Utils'
 import AppConfig from '../Config/AppConfig'
+import ModalLogout from '../Components/Modal/ModalLogout'
 
 class AdminlteContainer extends React.PureComponent {
   static propTypes = {
@@ -63,18 +64,19 @@ class AdminlteContainer extends React.PureComponent {
       <div className='wrapper'>
         <Helmet>
           <title>Homessss</title>
-          <body className='hold-transition skin-blue sidebar-mini' />
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
         {(isLoggedIn(this.props.isLoggedIn) === true) && <Header userRole={userRole} />}
         {(isLoggedIn(this.props.isLoggedIn) === true) && <Sidebar userRole={userRole} />}
-        <div style={{ minHeight: window.innerHeight - 200 }}>{children}</div>
+        {children}
+        <ModalLogout logout={this.props.doLogout} />
         {(isLoggedIn(this.props.isLoggedIn) === true) &&
           <footer className='main-footer'>
-            <div className='pull-right hidden-xs'>
-              <b>Version</b> 0.0.1.1
+            <strong>Copyright © 2019 <a href='https://www.prismalink.co.id'>PT. Prismalink International</a>.</strong>
+            All rights reserved.
+            <div className='float-right d-none d-sm-inline-block'>
+              <b>Version</b> 0.0.1
             </div>
-            <strong>Copyright &copy; 2019 <Link to='https://prismalink.co.id'>PT. Prismalink International</Link>.</strong> All rights
-            reserved.
           </footer>}
       </div>
     )

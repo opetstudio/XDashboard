@@ -8,7 +8,7 @@ import AppConfig from '../../Config/AppConfig'
 const basePath = AppConfig.basePath
 class TheComponent extends React.PureComponent {
   render () {
-    console.log('render')
+    console.log('LoginCheck render')
     if (isLoggedIn(this.props.isLoggedIn) !== true) { return <Redirect to={`${basePath}/login`} /> }
     return null
   }

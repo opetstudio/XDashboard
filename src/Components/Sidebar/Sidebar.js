@@ -27,7 +27,7 @@ class Sidebar extends Component {
     const pageRole = page.role || 'xxxx'
     if (!pageRole.includes(this.props.userRole)) return null
     const baseRoute = `${basePath}${route}`
-    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'active' : ''}><Link onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'fa fa-circle-o'} /> {page.title || title}</Link></li>)
+    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'active nav-item' : 'nav-item'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'far fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
   }
 
   _getMenuLiSingle (route, title, liClass) {
@@ -35,7 +35,7 @@ class Sidebar extends Component {
     const pageRole = page.role || 'xxxx'
     if (!pageRole.includes(this.props.userRole)) return null
     const baseRoute = `${basePath}${route}`
-    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'active' : ''}><Link onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'fa fa-circle-o'} /> <span>{page.title || title}</span></Link></li>)
+    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'nav-item active' : 'nav-item active'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'fas fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
   }
 
   render () {
@@ -47,65 +47,81 @@ class Sidebar extends Component {
     // else if (this.props.userRole >= 300 && this.props.userRole < 310) return (<Sidebar userRole={this.props.userRole} appPatch={this.props.appPatch} routeActive={this.props.routeActive} sessionToken={this.props.sessionToken} history={this.props.history} {...this.props} />)
     // else if (this.props.userRole >= 200 && this.props.userRole < 300)
     return (
-      <aside className='main-sidebar'>
-        <section className='sidebar'>
-          {(this.props.userRole >= 500 && this.props.userRole < 600) &&
-            <SidebarBank
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 400 && this.props.userRole < 500) &&
-            <SidebarOperator
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 310 && this.props.userRole < 400) &&
-            <SidebarOperator
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 300 && this.props.userRole < 310) &&
-            <SidebarOperator
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 210 && this.props.userRole < 300) &&
-            <SidebarOperator
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 200 && this.props.userRole < 210) &&
-            <SidebarInstitutionAdmin
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-          {(this.props.userRole >= 100 && this.props.userRole < 200) &&
-            <SidebarOperator
-              getMenuLiSingle={this._getMenuLiSingle}
-              getMenuLi={this._getMenuLi}
-              appPatch={this.props.appPatch}
-              sessionToken={this.props.sessionToken}
-              routeActive={this.props.routeActive}
-            />}
-        </section>
+      <aside className='main-sidebar sidebar-dark-primary elevation-4'>
+        {/* Brand Logo */}
+        <a href='#' className='brand-link'>
+          <img src={Images.AdminLTELogo} alt='Prismalink International' className='brand-image img-circle elevation-3' style={{ opacity: '.8' }} />
+          <span className='brand-text font-weight-light'>MBDD</span>
+        </a>
+        <div className='sidebar'>
+          <div className='user-panel mt-3 pb-3 mb-3 d-flex'>
+            <div className='image'>
+              <img src={Images.useravatar} className='img-circle elevation-2' alt='User Image' />
+            </div>
+            <div className='info'>
+              <Link to={`${AppConfig.basePath}/my-profile/${getAccessToken(this.props.sessionToken)}`} className='d-block'>{this.props.userFullName}</Link>
+            </div>
+          </div>
+
+          <nav className='mt-2'>
+            {(this.props.userRole >= 500 && this.props.userRole < 600) &&
+              <SidebarBank
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 400 && this.props.userRole < 500) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 310 && this.props.userRole < 400) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 300 && this.props.userRole < 310) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 210 && this.props.userRole < 300) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 200 && this.props.userRole < 210) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+            {(this.props.userRole >= 100 && this.props.userRole < 200) &&
+              <SidebarOperator
+                getMenuLiSingle={this._getMenuLiSingle}
+                getMenuLi={this._getMenuLi}
+                appPatch={this.props.appPatch}
+                sessionToken={this.props.sessionToken}
+                routeActive={this.props.routeActive}
+              />}
+          </nav>
+        </div>
       </aside>
     )
   }

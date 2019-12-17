@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { Line } from 'react-chartjs-2'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 
 const paymentSuccessData = [65, 59, 80, 81, 56, 55, 40]
 const paymentRejectData = [28, 48, 40, 19, 86, 27, 90]
@@ -34,7 +35,7 @@ const salesChartData = {
         // 'rgba(54, 162, 235, 0.2)',
         // 'rgba(255, 206, 86, 0.2)',
         // 'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
+        'rgba(153, 102, 255, 0.2)'
         // 'rgba(255, 159, 64, 0.2)'
       ],
       borderColor: [
@@ -121,25 +122,21 @@ class PageHome extends Component {
         <LoginCheck />
         <Helmet>
           <title>Home</title>
-          <body className='hold-transition skin-blue sidebar-mini' />
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
-        <section className='content-header'>
-          <h1>
-            Dashboard
-            <small>Version 2.0</small>
-          </h1>
-          <ol className='breadcrumb'>
-            <li><a href='#'><i className='fa fa-dashboard' /> Home</a></li>
-            <li className='active'>Dashboard</li>
-          </ol>
-        </section>
+        {/* Content Header (Page header) */}
+        <ContentHeader
+          title='Dashboard'
+          breadcrumb={[{ title: 'Home', link: '#' }, { title: 'Dashboard v2', link: null, isActive: true }]}
+        />
+        {/* /.content-header */}
         {/* Main content */}
         <section className='content'>
           {/* Info boxes */}
           <div className='row'>
-            <div className='col-md-4 col-sm-6 col-xs-12'>
+            <div className='col-12 col-sm-6 col-md-4'>
               <div className='info-box'>
-                <span className='info-box-icon bg-aqua'><i className='fa fa-xl fa-line-chart color-blue' /></span>
+                <span className='info-box-icon bg-info elevation-1'><i className='fas fa-cog' /></span>
                 <div className='info-box-content'>
                   <span className='info-box-text'>Transaction Per Month</span>
                   <span className='info-box-number'>{transactionPerMonth}<small /></span>
@@ -149,9 +146,9 @@ class PageHome extends Component {
               {/* /.info-box */}
             </div>
             {/* /.col */}
-            <div className='col-md-4 col-sm-6 col-xs-12'>
-              <div className='info-box'>
-                <span className='info-box-icon bg-green'><i className='fa fa-xl fa-money color-orange' /></span>
+            <div className='col-12 col-sm-6 col-md-4'>
+              <div className='info-box mb-3'>
+                <span className='info-box-icon bg-danger elevation-1'><i className='fas fa-thumbs-up' /></span>
                 <div className='info-box-content'>
                   <span className='info-box-text'>Total Amount</span>
                   <span className='info-box-number'>{totalAmountTransaction}</span>
@@ -162,10 +159,10 @@ class PageHome extends Component {
             </div>
             {/* /.col */}
             {/* fix for small devices only */}
-            <div className='clearfix visible-sm-block' />
-            <div className='col-md-4 col-sm-6 col-xs-12'>
-              <div className='info-box'>
-                <span className='info-box-icon bg-red'><i className='fa fa-xl fa-university color-teal' /></span>
+            <div className='clearfix hidden-md-up' />
+            <div className='col-12 col-sm-6 col-md-4'>
+              <div className='info-box mb-3'>
+                <span className='info-box-icon bg-success elevation-1'><i className='fas fa-shopping-cart' /></span>
                 <div className='info-box-content'>
                   <span className='info-box-text'>Total Amount Today</span>
                   <span className='info-box-number'>{totalAmountToday}</span>
@@ -180,12 +177,17 @@ class PageHome extends Component {
           {/* /.row */}
           <div className='row'>
             <div className='col-md-12'>
-              <div className='box'>
-                <div className='box-header with-border'>
-                  <h3 className='box-title'>Monthly Recap Report</h3>
+              <div className='card'>
+                <div className='card-header'>
+                  <h5 className='card-title'>Monthly Recap Report</h5>
+                  <div className='card-tools'>
+                    <button type='button' className='btn btn-tool' data-card-widget='collapse'>
+                      <i className='fas fa-minus' />
+                    </button>
+                  </div>
                 </div>
                 {/* /.box-header */}
-                <div className='box-body'>
+                <div className='card-body'>
                   <div className='row'>
                     <div className='col-md-8'>
                       <p className='text-center'>
@@ -198,6 +200,7 @@ class PageHome extends Component {
                           data={salesChartData}
                           options={salesChartOptions}
                         />
+                        {/* <canvas id='salesChart' height='180' style='height: 180px;' /> */}
                       </div>
                       {/* /.chart-responsive */}
                     </div>
@@ -207,47 +210,45 @@ class PageHome extends Component {
                         <strong>Transaction Status Per Month</strong>
                       </p>
                       <div className='progress-group'>
-                        <span className='progress-text'>Settled</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.success}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-green' style={{ width: `${50}%` }} />
-                        </div>
-                      </div>
-                      {/* /.progress-group */}
-                      <div className='progress-group'>
-                        <span className='progress-text'>Pending</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.pending}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-warning' style={{ width: `${transactionStatusPerMonth.success / transactionPerMonth * 100}%` }} />
-                        </div>
-                      </div>
-                      {/* /.progress-group */}
-                      <div className='progress-group'>
-                        <span className='progress-text'>Reject</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.reject}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-red' style={{ width: `${transactionStatusPerMonth.reject / transactionPerMonth * 100}%` }} />
+                        Settled
+                        <span className='float-right'>{transactionStatusPerMonth.success}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.success / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
-                        <span className='progress-text'>Refund Request</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.refundPending}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-warning' style={{ width: `${transactionStatusPerMonth.refundPending / transactionPerMonth * 100}%` }} />
+                        Pending
+                        <span className='float-right'>{transactionStatusPerMonth.pending}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.pending / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
-                        <span className='progress-text'>Refund Approved</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.refundSuccess}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-green' style={{ width: `${transactionStatusPerMonth.refundSuccess / transactionPerMonth * 100}%` }} />
+                        Reject
+                        <span className='float-right'>{transactionStatusPerMonth.reject}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.reject / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                       <div className='progress-group'>
-                        <span className='progress-text'>Refund Rejected</span>
-                        <span className='progress-number'><b>{transactionStatusPerMonth.refundReject}</b></span>
-                        <div className='progress sm'>
-                          <div className='progress-bar progress-bar-red' style={{ width: `${transactionStatusPerMonth.refundReject / transactionPerMonth * 100}%` }} />
+                        Refund Request
+                        <span className='float-right'>{transactionStatusPerMonth.refundPending}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.refundPending / transactionPerMonth * 100}%` }} />
+                        </div>
+                      </div>
+                      <div className='progress-group'>
+                        Refund Approved
+                        <span className='float-right'>{transactionStatusPerMonth.refundSuccess}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.refundSuccess / transactionPerMonth * 100}%` }} />
+                        </div>
+                      </div>
+                      <div className='progress-group'>
+                        Refund Rejected
+                        <span className='float-right'>{transactionStatusPerMonth.refundReject}</span>
+                        <div className='progress progress-sm'>
+                          <div className='progress-bar bg-primary' style={{ width: `${transactionStatusPerMonth.refundReject / transactionPerMonth * 100}%` }} />
                         </div>
                       </div>
                     </div>

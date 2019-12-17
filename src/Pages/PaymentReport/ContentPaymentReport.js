@@ -10,22 +10,25 @@ class ContentPaymentReport extends Component {
     console.log('render')
     return (
       <section className='content'>
-        <FilterTransaction
-          userMerchantCode={this.props.userMerchantCode}
-        />
-        {/* <MaterialUiTable   /> */}
-        <div className='box'>
-          {/* <div className='box-header'>
-                <h3 className='box-title'>Data Table With Full Features</h3>
-              </div> */}
-          <div className='box-body'>
-            <div className='row'>
-              <div className='col-sm-12'>
-                <TablePaginationContainer
-                  url='/plink/report/list'
-                  columns={getTransactionColumn(this.props)}
-                  userMerchantCode={this.props.userMerchantCode}
-                />
+        <div className='container-fluid'>
+          <FilterTransaction
+            userMerchantCode={this.props.userMerchantCode}
+            withoutSof
+          />
+          {/* <MaterialUiTable   /> */}
+          <div className='card card-primary'>
+            {/* <div className='box-header'>
+                  <h3 className='box-title'>Data Table With Full Features</h3>
+                </div> */}
+            <div className='card-body'>
+              <div className='row'>
+                <div className='col-sm-12'>
+                  <TablePaginationContainer
+                    url='/plink/report/list'
+                    columns={getTransactionColumn(this.props)}
+                    userMerchantCode={this.props.userMerchantCode}
+                  />
+                </div>
               </div>
             </div>
           </div>

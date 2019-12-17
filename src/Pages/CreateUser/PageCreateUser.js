@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import FormCreateUser from './FormCreateUser'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 
 class PageCreateUser extends Component {
   render () {
@@ -11,19 +12,12 @@ class PageCreateUser extends Component {
         <LoginCheck />
         <Helmet>
           <title>Registrasi User</title>
-          <body className='hold-transition skin-blue sidebar-mini' />
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
-        <section className='content-header'>
-          <h1>Registrasi User</h1>
-          <ol className='breadcrumb'>
-            <li>
-              <a href='#'>
-                <i className='fa fa-dashboard' /> User
-              </a>
-            </li>
-            <li className='active'>Registrasi User</li>
-          </ol>
-        </section>
+        <ContentHeader
+          title='Report'
+          breadcrumb={[{ title: 'User', link: '#' }, { title: 'Registrasi User', link: null, isActive: true }]}
+        />
         <FormCreateUser />
       </div>
     )

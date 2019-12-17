@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
 // Import Screens for the Router
 // prettier-ignore
 import ResponsiveContainer from '../Containers/ResponsiveContainer'
-import {pageList} from '../Utils/Pages'
+import { pageList } from '../Utils/Pages'
 
 import { loadScript, getSession } from '../Utils/Utils'
 import AppConfig from '../Config/AppConfig'
@@ -37,22 +37,28 @@ class App extends Component {
       //   } else {
       //     this.props.checkLogedStatus({})
       //   }
-      
-        
+
       // // }
     })
   }
+
   checkLogin (pathName) {
-    if(loginPath === pathName) {
+    console.log('checkLogin statussssss')
+    if (loginPath === pathName) {
       console.log('ok')
+    } else {
+      this.props.checkLogedStatus({})
     }
   }
+
   componentWillUnmount () {
     this.unlisten()
   }
+
   componentDidMount () {
     loadScript()
   }
+
   render () {
     console.log('render')
     return <div>{this.props.children}</div>
@@ -66,7 +72,7 @@ class NavigationRouter extends Component {
     // let basePath = '/paymentpage' // for jboss
     // let basePath = '' // for docker
     // let basePath = '/dashboard' // for docker
-    let userRole = getSession('userRole')
+    const userRole = getSession('userRole')
     // if (this.props.userRole >= 400 && this.props.userRole < 500) return (<SidebarUser sessionToken={this.props.sessionToken} history={this.props.history} {...this.props} />)
     // // merchant support
     // else if (this.props.userRole >= 310 && this.props.userRole < 400) return (<SidebarMerchantSupport appPatch={this.props.appPatch} routeActive={this.props.routeActive} sessionToken={this.props.sessionToken} history={this.props.history} {...this.props} />)

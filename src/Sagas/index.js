@@ -91,8 +91,8 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8280' : 'http://159.65.131.214:30397'
 // const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'https://api.erevnaraya.com'
 
-const apiDashboard = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '/dashboard-api/')
-const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '/dashboard-api/py/')
+const apiDashboard = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '')
+const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '')
 // const apiDashboardPy = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/py/' : 'http://188.166.198.144:8762/dashboard-api/py/')
 // const apiDashboardPy = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/py/' : 'http://localhost:8762/dashboard-api/py/')
 // const apiDashboardPy = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/py/' : 'https://api.erevnaraya.com/dashboard-api/py/')

@@ -15,13 +15,13 @@ var sha256 = require('crypto-js/sha256')
 var EncUtf8 = require('crypto-js/enc-utf8')
 
 const userPriv = {
-  '500': 'Bank',
-  '400': 'Customer',
-  '310': 'Merchant Support',
-  '300': 'Merchant Admin',
-  '210': 'Institution Support',
-  '200': 'Institution Admin',
-  '100': 'Operator'
+  500: 'Bank',
+  400: 'Customer',
+  310: 'Merchant Support',
+  300: 'Merchant Admin',
+  210: 'Institution Support',
+  200: 'Institution Admin',
+  100: 'Operator'
 }
 const nativeScript = (bUrl) => [
   // '/bower_components/jquery/dist/jquery.min.js',
@@ -91,7 +91,7 @@ export const Logo = () => (
     <a href='https://github.com/react-tools/react-table' target='_blank'>
       <img
         src='https://github.com/react-tools/media/raw/master/logo-react-table.png'
-        style={{ width: `150px`, margin: '.5em auto .3em' }}
+        style={{ width: '150px', margin: '.5em auto .3em' }}
       />
     </a>
   </div>
@@ -103,15 +103,16 @@ export const Tips = () => (
   </div>
 )
 
-export const loadScript = (cb) => {
+export const loadScript = cb => {
   let bUrl = basePath
   var url = window.location.href
-  var arr = url.split("/");
-  var result = arr[0] + "//" + arr[2]
+  var arr = url.split('/')
+  var result = arr[0] + '//' + arr[2]
   // console.log('result====>', result)
-  if(result === 'http://localhost:3000') bUrl = ''
-  window.recallDatePicker(cb)
+  if (result === 'http://localhost:3000') bUrl = ''
+  // window.recallDatePicker((start, end) => { console.log('start====>', start) })
   window.collapseBoxRefresh()
+  window.pageReconReport()
   // nativeScript(bUrl).map(str => {
   //   var element = document.querySelector('[src=\'' + str + '\']')
   //   if (element) element.parentNode.removeChild(element)
@@ -122,7 +123,9 @@ export const loadScript = (cb) => {
   //   document.body.appendChild(script)
   // })
 }
-
+export const loadScriptRecallDatePicker = cb => {
+  window.recallDatePicker(cb)
+}
 
 export const getAccessToken = (accessTokenState) => {
   // console.log('getAccessToken')
@@ -167,7 +170,7 @@ export const getUserPrivName = (uPriv) => {
 }
 export const isLoggedIn = (isLoggedInState) => {
   // console.log('isLoggedIn isLoggedInState1===>', isLoggedInState)
-  let loginFlag = getSession(AppConfig.loginFlag)
+  const loginFlag = getSession(AppConfig.loginFlag)
   // isLoggedInState = isLoggedInState || loginFlag || false
   isLoggedInState = loginFlag || false
   if ((isLoggedInState === 'true' || isLoggedInState === true)) isLoggedInState = true
@@ -183,38 +186,38 @@ export const generateSha256 = (msg) => {
 }
 export const getUserColumn = () => {
   return [{
-      id: 'userId',
-      Header: 'User Id',
-      accessor: 'userId' // String-based value accessors!
-    }, {
-      id: 'userFullname', // Required because our accessor is not a string
-      Header: 'Full Name',
-      accessor: d => d.userFullname, // Custom value accessors!,
-      Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-    }, {
-      id: 'email',
-      Header: props => <span>Email</span>, // Custom header components!
-      accessor: 'email'
-      // accessor: 'friend.age'
-    },
-    // {
-    //   Header: 'Group',
-    //   accessor: 'consUsernameMerchant'
-    // },
-    {
-      Header: 'Phone Number',
-      accessor: 'mobile'
-    }, {
-      Header: 'Address',
-      accessor: 'address'
-    }, {
-      Header: 'isLogin',
-      accessor: 'isLogin'
-    },
-    {
-      Header: 'Action',
-      accessor: 'userId'
-    }
+    id: 'userId',
+    Header: 'User Id',
+    accessor: 'userId' // String-based value accessors!
+  }, {
+    id: 'userFullname', // Required because our accessor is not a string
+    Header: 'Full Name',
+    accessor: d => d.userFullname, // Custom value accessors!,
+    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  }, {
+    id: 'email',
+    Header: props => <span>Email</span>, // Custom header components!
+    accessor: 'email'
+    // accessor: 'friend.age'
+  },
+  // {
+  //   Header: 'Group',
+  //   accessor: 'consUsernameMerchant'
+  // },
+  {
+    Header: 'Phone Number',
+    accessor: 'mobile'
+  }, {
+    Header: 'Address',
+    accessor: 'address'
+  }, {
+    Header: 'isLogin',
+    accessor: 'isLogin'
+  },
+  {
+    Header: 'Action',
+    accessor: 'userId'
+  }
   ]
 }
 export const getTransactionColumn = () => {
@@ -259,33 +262,33 @@ export const getTransactionColumn = () => {
   }]
 }
 export const setSession = (newSession, cb) => {
-  let encryptedCurrentSession = window.localStorage.getItem(AppConfig.sessionData)
+  const encryptedCurrentSession = window.localStorage.getItem(AppConfig.sessionData)
   let currentSessionJson = {}
-  if(encryptedCurrentSession) {
-    //decrypt
-    var bytes  = AES.decrypt(encryptedCurrentSession, 'prismalink2019');
-    var decryptedData = bytes.toString(EncUtf8);
+  if (encryptedCurrentSession) {
+    // decrypt
+    var bytes = AES.decrypt(encryptedCurrentSession, 'prismalink2019')
+    var decryptedData = bytes.toString(EncUtf8)
     currentSessionJson = JSON.parse(decryptedData)
     currentSessionJson = merge(currentSessionJson, newSession)
   }
   // console.log('currentSessionJson1==>', currentSessionJson)
-  var ciphertext = AES.encrypt(JSON.stringify(currentSessionJson), 'prismalink2019');
+  var ciphertext = AES.encrypt(JSON.stringify(currentSessionJson), 'prismalink2019')
   var encryptedData = ciphertext.toString()
   window.localStorage.setItem(AppConfig.sessionData, encryptedData)
   if (cb) cb()
 }
 export const getSession = (parameter) => {
-  let encryptedCurrentSession = window.localStorage.getItem(AppConfig.sessionData)
+  const encryptedCurrentSession = window.localStorage.getItem(AppConfig.sessionData)
   // console.log('encryptedCurrentSession=', encryptedCurrentSession)
   let currentSessionJson = {}
-  if(encryptedCurrentSession) {
-    //decrypt
-    var bytes  = AES.decrypt(encryptedCurrentSession, 'prismalink2019');
+  if (encryptedCurrentSession) {
+    // decrypt
+    var bytes = AES.decrypt(encryptedCurrentSession, 'prismalink2019')
     var decryptedData = bytes.toString(EncUtf8)
     // console.log('decryptedData=', decryptedData)
     currentSessionJson = JSON.parse(decryptedData)
   }
-  let sessionValue = path([parameter], currentSessionJson) || ''
+  const sessionValue = path([parameter], currentSessionJson) || ''
   // console.log('getSession parameter=', parameter)
   // console.log('getSession sessionValue=', sessionValue)
   return sessionValue

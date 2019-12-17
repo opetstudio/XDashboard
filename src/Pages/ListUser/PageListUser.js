@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import ContentListUser from './ContentListUser'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 class PageListUser extends Component {
   render () {
     console.log('render')
@@ -9,15 +10,14 @@ class PageListUser extends Component {
     return (
       <div className='content-wrapper'>
         <LoginCheck />
-        <Helmet> <title>User Management</title></Helmet>
-        <section className='content-header'>
-          <h1>
-            List All User
-          </h1>
-          <ol className='breadcrumb'>
-            <li><a href='#'><i className='fa fa-dashboard' /> User Management</a></li> <li className='active'>List All User</li>
-          </ol>
-        </section>
+        <Helmet>
+          <title>User Management</title>
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
+        </Helmet>
+        <ContentHeader
+          title='List All User'
+          breadcrumb={[{ title: 'User Management', link: '#' }, { title: 'List All User', link: null, isActive: true }]}
+        />
         <ContentListUser />
       </div>
     )
