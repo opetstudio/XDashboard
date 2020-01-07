@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import ContentRefundRequest from './ContentRefundRequest'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 
 export default class RefundRequestPage extends Component {
   render () {
@@ -12,15 +13,10 @@ export default class RefundRequestPage extends Component {
         <Helmet>
           <title>Transaksi Refund Request</title>
         </Helmet>
-        <section className='content-header'>
-          <h1>
-          Transaksi Refund Request
-          </h1>
-          <ol className='breadcrumb'>
-            <li><a href='#'><i className='fa fa-dashboard' /> Transaksi</a></li>
-            <li className='active'>Transaksi Refund Request</li>
-          </ol>
-        </section>
+        <ContentHeader
+          title='Refund Request'
+          breadcrumb={[{ title: 'Transaction', link: '#' }, { title: 'Refund Request', link: null, isActive: true }]}
+        />
         <section className='content'>
           <ContentRefundRequest />
         </section>

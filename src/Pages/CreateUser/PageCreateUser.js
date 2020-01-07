@@ -15,8 +15,8 @@ class PageCreateUser extends Component {
           <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
         <ContentHeader
-          title='Report'
-          breadcrumb={[{ title: 'User', link: '#' }, { title: 'Registrasi User', link: null, isActive: true }]}
+          title='User Registration'
+          breadcrumb={[{ title: 'User', link: '#' }, { title: 'User Registration', link: null, isActive: true }]}
         />
         <FormCreateUser />
       </div>

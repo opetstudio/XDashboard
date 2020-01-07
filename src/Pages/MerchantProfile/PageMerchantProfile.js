@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {path} from 'ramda'
+import { path } from 'ramda'
 import Helmet from 'react-helmet'
 import { Redirect } from 'react-router-dom'
-import {getAccessToken} from '../../Utils/Utils'
+import { getAccessToken } from '../../Utils/Utils'
 import MerchantInfo from '../../Containers/Merchant/MerchantInfo'
 import AppConfig from '../../Config/AppConfig'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 const basePath = AppConfig.basePath
 
 class PageMerchantProfile extends Component {
@@ -16,36 +17,39 @@ class PageMerchantProfile extends Component {
         <LoginCheck />
         <Helmet>
           <title>Merchant Profile</title>
-          <body className='hold-transition skin-blue sidebar-mini' />
+          <body className='hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed' />
         </Helmet>
-        <section className='content-header'>
-          <h1>Merchant Profile</h1>
-          <ol className='breadcrumb'>
-            <li>
-              <a href='#'>
-                <i className='fa fa-dashboard' /> Merchant
-              </a>
-            </li>
-            <li className='active'>Merchant Profile</li>
-          </ol>
-        </section>
+        <ContentHeader
+          title='Merchant Profile'
+          breadcrumb={[{ title: 'Administration', link: '#' }, { title: 'Merchant Profile', link: null, isActive: true }]}
+        />
         <section className='content'>
-          <form onSubmit={e => this._onSubmitForm(e)}>
-            <div className='box box-primary'>
-              <div className='box-header with-border'>
-                <h3 className='box-title'>Merchant Information</h3>
+          <form className='form' onSubmit={e => this._onSubmitForm(e)}>
+            <div className='card'>
+              <div className='card-header'>
+                <h5 className='card-title'>Merchant Information</h5>
+                <div className='card-tools'>
+                  <button type='button' className='btn btn-tool' data-card-widget='collapse'>
+                    <i className='fas fa-minus' />
+                  </button>
+                </div>
               </div>
-              <div className='box-body'>
+              <div className='card-body'>
                 <MerchantInfo />
               </div>
+              <div className='card-footer'>
+                <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
+                  Edit Profile
+                </button>
+              </div>
 
-              <div className='box-footer'>
-                {/* <button type='button' className='btn btn-primary' onClick={(e) => <Redirect to={`${basePath}/edit-profile/${getAccessToken(this.props.sessionToken)}`} />}> */}
-                {/* <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
+              {/* <div className='box-footer'> */}
+              {/* <button type='button' className='btn btn-primary' onClick={(e) => <Redirect to={`${basePath}/edit-profile/${getAccessToken(this.props.sessionToken)}`} />}> */}
+              {/* <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
                   Edit Profile
                 </button> */}
-                {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
-              </div>
+              {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
+              {/* </div> */}
             </div>
           </form>
         </section>

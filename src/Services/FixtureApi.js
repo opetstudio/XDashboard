@@ -30,7 +30,7 @@ export default {
         publicToken: 'YYYY',
         user: {
           userFullname: 'Nofrets Poai',
-          userRole: '500',
+          userRole: '300',
           merchantCode: '000000070070070',
           merchantId: '8afb8b146d7212fa016d721bb5970005'
         }

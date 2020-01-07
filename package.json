@@ -4,9 +4,13 @@
   "private": true,
   "homepage": "/dashboard",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
     "apisauce": "1.1.1",
+    "apollo-boost": "^0.4.7",
     "chart.js": "2.9.3",
     "crypto-js": "3.1.9-1",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
     "localforage": "1.7.3",
     "lodash": "4.17.15",
     "moment": "2.24.0",

@@ -15,6 +15,7 @@ export default () => {
     paymentgw: require('../Containers/Paymentgw/redux').reducer,
     user: require('../Containers/User/redux').reducer,
     tablepagination: require('../Containers/TablePagination/redux').reducer,
+    pagination: require('../Containers/Pagination/redux').reducer,
     dashboard: require('../Containers/Dashboard/redux').reducer,
     bank: require('../Containers/Bank/redux').reducer
     // end Ignite-Entity-Login

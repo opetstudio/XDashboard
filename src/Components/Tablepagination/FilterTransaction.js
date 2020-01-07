@@ -91,6 +91,44 @@ export default class FilterTransaction extends Component {
     }
   }
 
+  renderFields (type) {
+    if (type === 'mbddEvents') {
+      return (
+        <div className='row'>
+          <div className='col-md-6'>
+            {this._renderFormGroup('text', 'Merchant Ref. No', 'merchantRefNo', 'Merchant Ref No')}
+          </div>
+          <div className='col-md-6'>
+            {!this.props.withoutStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'SETLD', label: 'Settle' }, { value: 'PNDNG', label: 'Pending' }, { value: 'REJEC', label: 'Reject' }])}
+            {this.props.withRefundStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'REFREQ', label: 'Refund Request' }, { value: 'REFAPP', label: 'Refund Approve' }, { value: 'REFREJ', label: 'Refund Reject' }])}
+            {this._renderFormGroup('datepicker', 'Range Date', 'transactionStartDate', 'Range Date')}
+            {/* {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')} */}
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className='row'>
+          <div className='col-md-6'>
+            {this._renderFormGroup('text', 'Merchant Ref. No', 'merchantRefNo', 'Merchant Ref No')}
+            {this._renderFormGroup('text', 'Bank Ref. No', 'bankRefNo', 'Bank Ref No')}
+            {this._renderFormGroup('text', 'Merchant User Id', 'merchantUserId', 'Merchant User Id')}
+            {!this.props.withoutSof && this._renderFormGroup('select', 'Source Of Fund', 'sourceOfFund', 'Source Of Fund', [{ value: '', label: '-- select bank --' }, { value: 'bank-btpn', label: 'Jenius - Bank BTPN' }, { value: 'bank-cimb', label: 'Bank CIMB Niaga' }])}
+            {(this.props.userRole === '100' || this.props.userRole === '200' || this.props.userRole === '210' || this.props.userRole === '400') && this._renderFormGroup('number', 'Merchant Code', 'merchantCode', 'Merchant Code')}
+          </div>
+          <div className='col-md-6'>
+            {!this.props.withoutStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'SETLD', label: 'Settle' }, { value: 'PNDNG', label: 'Pending' }, { value: 'REJEC', label: 'Reject' }])}
+            {this.props.withRefundStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'REFREQ', label: 'Refund Request' }, { value: 'REFAPP', label: 'Refund Approve' }, { value: 'REFREJ', label: 'Refund Reject' }])}
+            {this._renderFormGroup('number', 'Minimal Amount', 'transactionAmountMin', 'Minimal Amount')}
+            {this._renderFormGroup('number', 'Maximal Amount', 'transactionAmountMax', 'Maximal Amount')}
+            {this._renderFormGroup('datepicker', 'Range Date', 'transactionStartDate', 'Range Date')}
+            {/* {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')} */}
+          </div>
+        </div>
+      )
+    }
+  }
+
   render () {
     console.log('render')
     return (
@@ -105,39 +143,26 @@ export default class FilterTransaction extends Component {
             </div>
           </div>
           <div className='card-body'>
-            <div className='row'>
-              <div className='col-md-6'>
-                {this._renderFormGroup('text', 'Merchant Ref. No', 'merchantRefNo', 'Merchant Ref No')}
-                {this._renderFormGroup('text', 'Bank Ref. No', 'bankRefNo', 'Bank Ref No')}
-                {this._renderFormGroup('text', 'Merchant User Id', 'merchantUserId', 'Merchant User Id')}
-                {!this.props.withoutSof && this._renderFormGroup('select', 'Source Of Fund', 'sourceOfFund', 'Source Of Fund', [{ value: '', label: '-- select bank --' }, { value: 'bank-btpn', label: 'Jenius - Bank BTPN' }, { value: 'bank-cimb', label: 'Bank CIMB Niaga' }])}
-                {(this.props.userRole === '100' || this.props.userRole === '200' || this.props.userRole === '210' || this.props.userRole === '400') && this._renderFormGroup('number', 'Merchant Code', 'merchantCode', 'Merchant Code')}
-              </div>
-              <div className='col-md-6'>
-                {!this.props.withoutStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'SETLD', label: 'Settle' }, { value: 'PNDNG', label: 'Pending' }, { value: 'REJEC', label: 'Reject' }])}
-                {this.props.withRefundStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'REFREQ', label: 'Refund Request' }, { value: 'REFAPP', label: 'Refund Approve' }, { value: 'REFREJ', label: 'Refund Reject' }])}
-                {this._renderFormGroup('number', 'Minimal Amount', 'transactionAmountMin', 'Minimal Amount')}
-                {this._renderFormGroup('number', 'Maximal Amount', 'transactionAmountMax', 'Maximal Amount')}
-                {this._renderFormGroup('datepicker', 'Range Date', 'transactionStartDate', 'Range Date')}
-                {/* {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')} */}
-              </div>
-            </div>
+
+            {this.renderFields(this.props.type)}
+
           </div>
           <div className='card-footer'>
-            <button type='submit' className='btn btn-info'>
-              <i className='fas fa-search' /> Search
-            </button>|
-            <button type='button' className='btn btn-info' onClick={this._resetFilter}><i className='fas fa-close' /> Reset</button>|
-            <div className='btn-group'>
-              <button type='button' className='btn btn-warning'>Download</button>
-              <button type='button' className='btn btn-warning dropdown-toggle dropdown-icon' data-toggle='dropdown'>
-                <span className='sr-only'>Toggle Dropdown</span>
-                <div className='dropdown-menu' role='menu'>
-                  <a className='dropdown-item' href='#'>Download CSV</a>
-                  <a className='dropdown-item' href='#'>Download TXT</a>
-                </div>
-              </button>
-            </div>
+            <button type='submit' className='btn btn-info' style={{ marginRight: 5 }}>
+              <i className='fas fa-search' /> Searchh
+            </button>
+            <button type='button' className='btn btn-info' onClick={this._resetFilter} style={{ marginRight: 5 }}><i className='fas fa-close' /> Reset</button>
+            {!this.props.type &&
+              <div className='btn-group' style={{ merginLeft: 10 }}>
+                <button type='button' className='btn btn-warning'>Download</button>
+                <button type='button' className='btn btn-warning dropdown-toggle dropdown-icon' data-toggle='dropdown'>
+                  <span className='sr-only'>Toggle Dropdown</span>
+                  <div className='dropdown-menu' role='menu'>
+                    <a className='dropdown-item' href='#'>Download CSV</a>
+                    <a className='dropdown-item' href='#'>Download TXT</a>
+                  </div>
+                </button>
+              </div>}
           </div>
 
         </div>

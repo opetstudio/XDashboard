@@ -38,7 +38,12 @@ export const INITIAL_STATE = Immutable({
   merchantUserId: '',
   sourceOfFund: '',
   transactionStatus: '',
-  merchantCode: ''
+  merchantCode: '',
+
+  // table pagination
+
+  filter: {},
+  table: {}
 
 //   rows: ''
 })
@@ -64,7 +69,9 @@ export const TablepaginationSelectors = {
   bankRefNo: st => st.bankRefNo,
   merchantUserId: st => st.merchantUserId,
   sourceOfFund: st => st.sourceOfFund,
-  transactionStatus: st => st.transactionStatus
+  transactionStatus: st => st.transactionStatus,
+  filter: st => st.filter,
+  table: st => st.table
 //   rows: st => st.rows
 }
 
@@ -143,6 +150,9 @@ export const tablepaginationReadRequestPatch = (state, { data }) => {
       }
     } catch (err) {}
   }
+
+  if (data.hasOwnProperty('filter')) mergeData.filter = data.filter
+  if (data.hasOwnProperty('table')) mergeData.table = data.table
 
   mergeData.version = state.version + 1
   return state.merge(mergeData)

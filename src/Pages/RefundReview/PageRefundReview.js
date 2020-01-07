@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import RefundReviewContent from './RefundReviewContent'
 import LoginCheck from '../../Containers/Login/LoginCheck'
+import ContentHeader from '../../Components/ContentHeader'
 
 export default class PageRefundReview extends Component {
   render () {
@@ -12,15 +13,10 @@ export default class PageRefundReview extends Component {
         <Helmet>
           <title>Transaksi Refund Review</title>
         </Helmet>
-        <section className='content-header'>
-          <h1>
-          Transaksi Refund Review
-          </h1>
-          <ol className='breadcrumb'>
-            <li><a href='#'><i className='fa fa-dashboard' /> Transaksi</a></li>
-            <li className='active'>Transaksi Refund Review</li>
-          </ol>
-        </section>
+        <ContentHeader
+          title='Refund Review'
+          breadcrumb={[{ title: 'Transaction', link: '#' }, { title: 'Refund Review', link: null, isActive: true }]}
+        />
         <RefundReviewContent />
       </div>
     )

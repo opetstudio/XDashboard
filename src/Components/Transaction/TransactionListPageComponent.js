@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import {getTransactionColumn} from '../../Utils/TableColumn'
+import { getTransactionColumn } from '../../Utils/TableColumn'
 import TablePaginationContainer from '../../Containers/TablePagination/TablePaginationContainer'
 import FilterTransaction from '../../Containers/TablePagination/FilterTransaction'
 // import TablePagination from '../Table/TablePagination'
@@ -18,6 +18,7 @@ class TransactionListPageComponent extends Component {
     }
     // window.TransactionListPageComponent()
   }
+
   componentDidMount () {
     // console.log('componentDidMount')
     // this.props.transactionReadRequest({})
@@ -32,9 +33,11 @@ class TransactionListPageComponent extends Component {
     // document.body.appendChild(script)
     // window.TransactionListPageComponent([])
   }
+
   componentDidUpdate (prevProps) {
     // window.TransactionListPageComponent(this.props.listall)
   }
+
   render () {
     console.log('render')
     return (

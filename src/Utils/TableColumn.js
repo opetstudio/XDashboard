@@ -197,3 +197,46 @@ export const getUserColumn = () => {
   }
   ]
 }
+export const getMbddEventsColumn = () => {
+  return [{
+    id: 'ecomRefNo',
+    Header: 'Pg Ref No',
+    accessor: 'ecomRefNo' // String-based value accessors!
+  }, {
+    id: 'eventName', // Required because our accessor is not a string
+    Header: 'Event Name',
+    accessor: d => d.eventName, // Custom value accessors!,
+    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+  },
+  {
+    id: 'mbddRd',
+    Header: props => <span>mbddRd</span>, // Custom header components!
+    accessor: 'mbddRd'
+    // accessor: 'friend.age'
+  },
+  {
+    id: 'sessionToken',
+    Header: props => <span>sessionToken</span>, // Custom header components!
+    accessor: 'sessionToken'
+    // accessor: 'friend.age'
+  },
+  {
+    id: 'actionId',
+    Header: props => <span>actionId</span>, // Custom header components!
+    accessor: 'actionId'
+    // accessor: 'friend.age'
+  },
+  {
+    id: 'isComplete',
+    Header: props => <span>isComplete</span>, // Custom header components!
+    accessor: 'isComplete'
+    // accessor: 'friend.age'
+  },
+  {
+    id: 'createdUnixtime',
+    Header: props => <span>Created</span>, // Custom header components!
+    accessor: d => d.createdUnixtime && `${Moment(parseInt(d.createdUnixtime))}`
+    // accessor: 'friend.age'
+  }
+  ]
+}

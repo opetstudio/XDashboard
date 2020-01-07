@@ -27,7 +27,7 @@ class Sidebar extends Component {
     const pageRole = page.role || 'xxxx'
     if (!pageRole.includes(this.props.userRole)) return null
     const baseRoute = `${basePath}${route}`
-    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'active nav-item' : 'nav-item'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'far fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
+    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'active nav-item' : 'nav-item'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute, pageTitle: title })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'far fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
   }
 
   _getMenuLiSingle (route, title, liClass) {
@@ -35,7 +35,7 @@ class Sidebar extends Component {
     const pageRole = page.role || 'xxxx'
     if (!pageRole.includes(this.props.userRole)) return null
     const baseRoute = `${basePath}${route}`
-    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'nav-item active' : 'nav-item active'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'fas fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
+    return (<li className={(this.props.routeActive || '').startsWith(baseRoute) ? 'nav-item active' : 'nav-item active'}><Link className='nav-link' onClick={() => this.props.appPatch({ routeActive: baseRoute, pageTitle: title })} to={`${baseRoute}/${getAccessToken(this.props.sessionToken)}`}><i className={liClass || 'fas fa-circle nav-icon'} /> <p>{page.title || title}</p></Link></li>)
   }
 
   render () {

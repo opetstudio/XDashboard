@@ -4,6 +4,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
 import ReduxPersist from '../Config/ReduxPersist'
+import { ApolloProvider } from '@apollo/react-hooks'
+import ApolloClient from 'apollo-boost'
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8280/graphql'
+})
 
 // create our store
 const { store } = createStore()
@@ -32,7 +38,9 @@ class Adminlte extends Component {
     // }
     return (
       <Provider store={store}>
-        <RootContainer />
+        <ApolloProvider client={client}>
+          <RootContainer />
+        </ApolloProvider>
       </Provider>
     )
     // return (

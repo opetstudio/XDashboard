@@ -16,208 +16,201 @@ class ContentReconReport extends Component {
   render () {
     return (
       <section className='content'>
-
-        {/* Main row */}
-        <div className='row'>
-          {/* Left col */}
-          <section className='col-lg-6 connectedSortable'>
-            <div className='box box-primary'>
-              <div className='box-header bg-light-blue-gradient'>
-                <h3 className='box-title'>Prismalink</h3>
-                <div className='pull-right box-tools'>
-                  <button type='button' className='btn btn-primary btn-sm pull-right' data-widget='collapse' data-toggle='tooltip' title='Collapse' style={{ marginRight: 5 }}>
-                    <i className='fa fa-minus' />
-                  </button>
-                </div>
+        {/* Date and time range */}
+        <div className='col-6'>
+          <div className='form-group'>
+            <label style={{ color: '#999999' }}>Date and time range:</label>
+            <div className='input-group'>
+              <div className='input-group-prepend'>
+                <span className='input-group-text'><i className='far fa-clock' /></span>
               </div>
-              {/* /.box-header */}
-              <div className='box-body'>
-                <table className='table table-striped'>
-                  <thead>
-                    <tr>
-                      <th>Payment Status</th>
-                      <th>Total</th>
-                      <th>IDR</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Success</td>
-                      <td><span className='badge bg-green'>3</span></td>
-                      <td>500.000‬‬</td>
-                    </tr>
-                    <tr>
-                      <td>Cancel</td>
-                      <td><span className='badge bg-red'>3</span></td>
-                      <td>‭210.000‬</td>
-                    </tr>
-                    <tr>
-                      <td>Pending</td>
-                      <td><span className='badge bg-yellow'>6</span></td>
-                      <td>620.000‬</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {/* /.box-body */}
+              <input type='text' className='form-control float-right' id='reservationtime2' />
             </div>
-            {/* quick email widget */}
-            <div className='box box-primary'>
-              <div className='box-header'>
-                <h3 className='box-title'>Prismalink</h3>
-                {/* tools box */}
-                <div className='pull-right box-tools'>
-                  <button type='button' className='btn btn-sm pull-right' data-widget='collapse' data-toggle='tooltip' title='Collapse' style={{ marginRight: 5 }}>
-                    <i className='fa fa-minus' />
-                  </button>
-                </div>
-                {/* /. tools */}
-              </div>
-              <div className='box-body'>
-                <table id='example1' className='table table-hover'>
-                  <thead>
-                    <tr>
-                      <th>Plink Ref No</th>
-                      <th>Bank Ref No</th>
-                      <th>Amount</th>
-                      <th>Payment Status</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>P001</td>
-                      <td>B001</td>
-                      <td>Rp. 100.000</td>
-                      <td><span className='badge bg-secondary'>Pending</span></td>
-                      <td>
-                        <button type='button' className='btn btn-block btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>P002</td>
-                      <td>-</td>
-                      <td>Rp. 200.000</td>
-                      <td><span className='badge bg-secondary'>Pending</span></td>
-                      <td>
-                        <button type='button' className='btn btn-block btn-danger btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Not Found</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>P003</td>
-                      <td>B002</td>
-                      <td>Rp. 50.000</td>
-                      <td><span className='badge bg-secondary'>Pending</span></td>
-                      <td>
-                        <button type='button' className='btn btn-block btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {/* <div class="box-footer clearfix">
-        <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
-          <i class="fa fa-arrow-circle-right"></i></button>
-      </div> */}
-            </div>
-          </section>
-          {/* /.Left col */}
-          {/* right col (We are only adding the ID to make the widgets sortable) */}
-          <section className='col-lg-6 connectedSortable'>
-            <div className='box box-success'>
-              <div className='box-header bg-green-gradient'>
-                <h3 className='box-title'>Prismalink</h3>
-                <div className='pull-right box-tools'>
-                  <button type='button' className='btn btn-success btn-sm pull-right' data-widget='collapse' data-toggle='tooltip' title='Collapse' style={{ marginRight: 5 }}>
-                    <i className='fa fa-minus' />
-                  </button>
-                </div>
-              </div>
-              {/* /.box-header */}
-              <div className='box-body'>
-                <table className='table table-striped'>
-                  <thead>
-                    <tr>
-                      <th>Payment Status</th>
-                      <th>Total</th>
-                      <th>IDR</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Success</td>
-                      <td><span className='badge bg-green'>4</span></td>
-                      <td>600.000‬‬</td>
-                    </tr>
-                    <tr>
-                      <td>Cancel</td>
-                      <td><span className='badge bg-red'>7</span></td>
-                      <td>530.000‬</td>
-                    </tr>
-                    <tr>
-                      <td />
-                      <td />
-                      <td>‭</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {/* /.box-body */}
-            </div>
-            {/* quick email widget */}
-            <div className='box box-success'>
-              <div className='box-header'>
-                <h3 className='box-title'>Prismalink</h3>
-                {/* tools box */}
-                <div className='pull-right box-tools'>
-                  <button type='button' className='btn btn-sm pull-right' data-widget='collapse' data-toggle='tooltip' title='Collapse' style={{ marginRight: 5 }}>
-                    <i className='fa fa-minus' />
-                  </button>
-                </div>
-                {/* /. tools */}
-              </div>
-              <div className='box-body'>
-                <table id='example2' className='table table-hover'>
-                  <thead>
-                    <tr>
-                      <th>Plink Ref No</th>
-                      <th>Bank Ref No</th>
-                      <th>Amount</th>
-                      <th>Payment Status</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>P001</td>
-                      <td>B001</td>
-                      <td>Rp. 100.000</td>
-                      <td><span className='badge bg-secondary'>Success</span></td>
-                      <td>
-                        <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>P003</td>
-                      <td>B002</td>
-                      <td>Rp. 50.000</td>
-                      <td><span className='badge bg-secondary'>Cancel</span></td>
-                      <td>
-                        <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {/* <div class="box-footer clearfix">
-                <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
-                  <i class="fa fa-arrow-circle-right"></i></button>
-              </div> */}
-            </div>
-          </section>
-          {/* right col */}
+            {/* /.input group */}
+          </div>
         </div>
-        {/* /.row (main row) */}
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-6'>
+              <div className='card card-primary'>
+                <div className='card-header'>
+                  <h3 className='card-title'>Prismalink</h3>
+                  <div className='card-tools'>
+                    <button type='button' className='btn btn-tool' data-card-widget='collapse'><i className='fas fa-minus' />
+                    </button>
+                  </div>
+                </div>
+                <div className='card-body p-0'>
+                  <table className='table table-striped'>
+                    <thead>
+                      <tr>
+                        <th>Payment Status</th>
+                        <th>Total</th>
+                        <th>IDR</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Success</td>
+                        <td><span className='badge bg-success'>3</span></td>
+                        <td>500.000‬‬</td>
+                      </tr>
+                      <tr>
+                        <td>Cancel</td>
+                        <td><span className='badge bg-danger'>3</span></td>
+                        <td>‭210.000‬</td>
+                      </tr>
+                      <tr>
+                        <td>Pending</td>
+                        <td><span className='badge bg-info'>6</span></td>
+                        <td>620.000‬</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* /.card-body */}
+              </div>
+              {/* /.card */}
+              {/* Default box */}
+              <div className='card card-outline card-primary'>
+                <div className='card-header'>
+                  <h3 className='card-title'>Prismalink</h3>
+                  <div className='card-tools'>
+                    <button type='button' className='btn btn-tool' data-card-widget='maximize'><i className='fas fa-expand' />
+                    </button>
+                  </div>
+                </div>
+                <div className='card-body'>
+                  <table id='example1' className='table table-hover'>
+                    <thead>
+                      <tr>
+                        <th>Plink Ref No</th>
+                        <th>Bank Ref No</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>P001</td>
+                        <td>B001</td>
+                        <td>Rp. 100.000</td>
+                        <td><span className='badge bg-secondary'>Pending</span></td>
+                        <td>
+                          <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>P002</td>
+                        <td>-</td>
+                        <td>Rp. 200.000</td>
+                        <td><span className='badge bg-secondary'>Pending</span></td>
+                        <td>
+                          <button type='button' className='btn btn-block btn-outline-danger btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Not Found</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>P003</td>
+                        <td>B002</td>
+                        <td>Rp. 50.000</td>
+                        <td><span className='badge bg-secondary'>Pending</span></td>
+                        <td>
+                          <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* /.card-body */}
+              </div>
+              {/* /.card */}
+            </div>
+            <div className='col-6'>
+              <div className='card card-success'>
+                <div className='card-header'>
+                  <h3 className='card-title'>Bank</h3>
+                  <div className='card-tools'>
+                    <button type='button' className='btn btn-tool' data-card-widget='collapse'><i className='fas fa-minus' />
+                    </button>
+                  </div>
+                </div>
+                <div className='card-body p-0'>
+                  <table className='table table-striped'>
+                    <thead>
+                      <tr>
+                        <th>Payment Status</th>
+                        <th>Total</th>
+                        <th>IDR</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Success</td>
+                        <td><span className='badge bg-success'>4</span></td>
+                        <td>600.000‬‬</td>
+                      </tr>
+                      <tr>
+                        <td>Cancel</td>
+                        <td><span className='badge bg-danger'>7</span></td>
+                        <td>530.000‬</td>
+                      </tr>
+                      <tr>
+                        <td />
+                        <td />
+                        <td>‭</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* /.card-body */}
+              </div>
+              <div className='card card-outline card-success' id='merchant2'>
+                <div className='card-header'>
+                  <h3 className='card-title'>Bank</h3>
+                  <div className='card-tools'>
+                    <button type='button' className='btn btn-tool' data-card-widget='maximize'><i className='fas fa-expand' />
+                    </button>
+                  </div>
+                </div>
+                <div className='card-body'>
+                  <table id='example2' className='table table-hover'>
+                    <thead>
+                      <tr>
+                        <th>Plink Ref No</th>
+                        <th>Bank Ref No</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>P001</td>
+                        <td>B001</td>
+                        <td>Rp. 100.000</td>
+                        <td><span className='badge bg-secondary'>Success</span></td>
+                        <td>
+                          <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>P003</td>
+                        <td>B002</td>
+                        <td>Rp. 50.000</td>
+                        <td><span className='badge bg-secondary'>Cancel</span></td>
+                        <td>
+                          <button type='button' className='btn btn-block btn-outline-secondary btn-xs' data-toggle='tooltip' data-placement='top' title='incompatibility of data with prismalink'>Mismatch</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {/* /.card-body */}
+              </div>
+            </div>
+          </div>
+        </div>
 
       </section>
     )

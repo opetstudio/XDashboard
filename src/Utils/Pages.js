@@ -30,6 +30,11 @@ import PageReconReport from '../Pages/Reconciliation/PageReconReport'
 import UserChangeLimitPageContainer from '../Containers/User/ChangeLimitPageContainer'
 import PaymentgwCreatePageContainer from '../Containers/Paymentgw/PaymentgwCreatePageContainer'
 import PaymentgwListPageContainer from '../Containers/Paymentgw/PaymentgwListPageContainer'
+import PageBindCard from '../Pages/Debitcard/PageBindCard'
+import PageBindAndPay from '../Pages/Debitcard/PageBindAndPay'
+import PagePayment from '../Pages/Debitcard/PagePayment'
+import PageUnbindCard from '../Pages/Debitcard/PageUnbindCard'
+import PageChangeLimit from '../Pages/Debitcard/PageChangeLimit'
 
 // import LoginPageContainer from '../Containers/Login/LoginPageContainer'
 import SignupPageContainer from '../Containers/Signup/SignupPageContainer'
@@ -40,7 +45,7 @@ import MyProfilePage from '../Containers/Profile/MyProfilePage'
 
 const lp = {
   '/home': { route: '/home', path: '/home/:sessionToken', component: PageHome, role: '100,500,200,210,300,310,400' }, // 1
-  '/usermanagement/listAllUser': { route: '/usermanagement/listAllUser', path: '/usermanagement/listAllUser/:sessionToken', component: PageListUser, role: '100,500,200,210,300,310,400', title: 'All User' }, // 2
+  '/usermanagement/listAllUser': { route: '/usermanagement/listAllUser', path: '/usermanagement/listAllUser/:sessionToken', component: PageListUser, role: '100,500,200,210,300,310,400', title: 'User Support' }, // 2
   '/paymentgw/create': { route: '/paymentgw/create', path: '/paymentgw/create/:sessionToken', component: PaymentgwCreatePageContainer, role: '100,500,200,210,300,310,400' }, // 3
   '/paymentgw/list': { route: '/paymentgw/list', path: '/paymentgw/list/:sessionToken', component: PaymentgwListPageContainer, role: '100,500,200,210,300,310,400' },
   '/institution/qrcode/allactive': { route: '/institution/qrcode/allactive', path: '/institution/qrcode/:sessionToken', component: PageMerchant, role: '100,500,200,210' },
@@ -56,8 +61,13 @@ const lp = {
   '/user/create': { route: '/user/create', path: '/user/create/:sessionToken', component: PageCreateUser, role: '100,500,200,210,300,310,400' },
   '/user/change-limit': { route: '/user/change-limit', path: '/user/change-limit/:sessionToken', component: UserChangeLimitPageContainer, role: '100,500,200,210,300,310,400' },
   '/user/list': { route: '/user/list', path: '/user/list/:sessionToken', component: PageListUser, role: '100,500,200,210,300,310,400' },
-  '/report': { route: '/report', path: '/report/:sessionToken', component: PagePaymentReport, role: '100,500,200,210,300,310,400', title: 'Payment Report' },
-  '/reconciliation/recon-report': { route: '/report', path: '/reconciliation/recon-report/:sessionToken', component: PageReconReport, role: '100,500,200,210,300,310,400', title: 'Reconciliation Report' },
+  '/report': { route: '/report', path: '/report/:sessionToken', component: PagePaymentReport, role: '100,500,200,210,300,310,400' },
+  '/debitcard/bind-card': { route: '/debitcard/bind-card', path: '/debitcard/bind-card/:sessionToken', component: PageBindCard, role: '100,500,200,210,300,310,400' },
+  '/debitcard/unbind-card': { route: '/debitcard/unbind-card', path: '/debitcard/unbind-card/:sessionToken', component: PageUnbindCard, role: '100,500,200,210,300,310,400' },
+  '/debitcard/bind-and-pay': { route: '/debitcard/bind-and-pay', path: '/debitcard/bind-and-pay/:sessionToken', component: PageBindAndPay, role: '100,500,200,210,300,310,400' },
+  '/debitcard/payment': { route: '/debitcard/payment', path: '/debitcard/payment/:sessionToken', component: PagePayment, role: '100,500,200,210,300,310,400' },
+  '/debitcard/change-limit': { route: '/debitcard/change-limit', path: '/debitcard/change-limit/:sessionToken', component: PageChangeLimit, role: '100,500,200,210,300,310,400' },
+  '/reconciliation/recon-report': { route: '/report', path: '/reconciliation/recon-report/:sessionToken', component: PageReconReport, role: '100,500,200,210,300,310,400' },
   '/report/detail': { route: '/report/detail', path: '/report/detail/:sessionToken', component: PageTrxDetail, role: '100,500,200,210,300,310,400', title: 'Transaction Detail' },
   '/report/detail-for-refund-request': { route: '/report/detail-for-refund-request', path: '/report/detail-for-refund-request/:sessionToken', component: PageTrxDetailForRefundRequest, role: '300,310', title: 'Transaction Detail For Refund Request' },
   '/report/detail-for-refund-review': { route: '/report/detail-for-refund-review', path: '/report/detail-for-refund-review/:sessionToken', component: PageTrxDetailForRefundReview, role: '300,310', title: 'Transaction Detail For Refund Request' },

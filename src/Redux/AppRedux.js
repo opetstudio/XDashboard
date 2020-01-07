@@ -26,6 +26,7 @@ let initialData = AppConfig.env === 'development' ? {
 export const INITIAL_STATE = Immutable({
   lang: initialData.LANG,
   routeActive: '',
+  pageTitle: '',
   merchantCode: '',
   version: 0,
   sessionToken: ''
@@ -40,6 +41,7 @@ export const AppSelectors = {
     return 'id'
   },
   routeActive: st => st.routeActive,
+  pageTitle: st => st.pageTitle,
   merchantCode: st => st.merchantCode,
   version: st => st.version
 }
@@ -47,6 +49,7 @@ const appPatch = (state, { data }) => {
   let mergeData = {}
   if (data.hasOwnProperty('merchantCode')) mergeData.merchantCode = data.merchantCode
   if (data.hasOwnProperty('routeActive')) mergeData.routeActive = data.routeActive
+  if (data.hasOwnProperty('pageTitle')) mergeData.pageTitle = data.pageTitle
   mergeData.version = state.version + 1
   return state.merge(mergeData)
 }
