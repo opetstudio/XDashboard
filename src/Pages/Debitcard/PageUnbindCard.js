@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import LoginCheck from '../../Containers/Login/LoginCheck'
-// import ContentHeader from '../../Components/ContentHeader'
+import ContentHeader from '../../Components/ContentHeader'
 import Tabs from '../../Components/Tabs'
 import TabContent from './TabContent'
 
@@ -21,10 +21,10 @@ export default class PagePayment extends Component {
           <title>Unbind Card</title>
           <body className='hold-transition skin-blue sidebar-mini' />
         </Helmet>
-        {/* <ContentHeader
-          title='Bind Card'
-          breadcrumb={[{ title: 'Debit Card', link: '#' }, { title: 'Bind Card', link: null, isActive: true }]}
-        /> */}
+        <ContentHeader
+          title='Unbind Card'
+          breadcrumb={[{ title: 'Debit Card', link: '#' }, { title: 'Unbind Card', link: null, isActive: true }]}
+        />
         <section className='content'>
           <div className='container-fluid'>
             <Tabs

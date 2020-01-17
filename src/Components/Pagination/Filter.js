@@ -39,6 +39,7 @@ export default class Filter extends Component {
     //   console.log(v.getAttribute('value'))
       const val = v.getAttribute('value')
       const name = v.getAttribute('name')
+      console.log('resetfilter name=' + name + ', val='+val)
       const isHidden = v.getAttribute('isHidden')
       //   console.log('isHidden=', isHidden)
       //   console.log('name=', name)
@@ -51,7 +52,7 @@ export default class Filter extends Component {
 
   render () {
     const { requestData, table, submitFilterMSG } = this.props
-    const rd = path([table, 'rd'], submitFilterMSG)
+    const rd = path(['rd'], submitFilterMSG)
     return (
       <form ref={table} className='form' onSubmit={this.handleOnSubmit.bind(this)}>
         <div className='card'>
@@ -74,7 +75,7 @@ export default class Filter extends Component {
             </button>
             {/* <button type='button' className='btn btn-info' onClick={this.resetFilter.bind(this)} style={{ marginRight: 5 }}><i className='fas fa-close' /> Reset</button> */}
             <button type='button' className='btn btn-info' onClick={this.resetFilter.bind(this)} style={{ marginRight: 5 }}><i className='fas fa-close' /> Reset</button>
-            {rd && <span style={{ color: 'red' }}>tesssss</span>}
+            {rd && <span style={{ color: 'red' }}>{rd}</span>}
           </div>
 
         </div>

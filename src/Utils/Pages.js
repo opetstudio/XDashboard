@@ -35,13 +35,15 @@ import PageBindAndPay from '../Pages/Debitcard/PageBindAndPay'
 import PagePayment from '../Pages/Debitcard/PagePayment'
 import PageUnbindCard from '../Pages/Debitcard/PageUnbindCard'
 import PageChangeLimit from '../Pages/Debitcard/PageChangeLimit'
+import PageUserProfile from '../Pages/UserProfile/PageUserProfile'
 
 // import LoginPageContainer from '../Containers/Login/LoginPageContainer'
 import SignupPageContainer from '../Containers/Signup/SignupPageContainer'
 import GenerateQrcodePageContainer from '../Containers/Qrcode/GenerateQrcodePageContainer'
 
 // import contiainer untuk halaman my profile
-import MyProfilePage from '../Containers/Profile/MyProfilePage'
+// import MyProfilePage from '../Containers/Profile/MyProfilePage'
+import PageMyProfile from '../Pages/MyProfile/PageMyProfile'
 
 const lp = {
   '/home': { route: '/home', path: '/home/:sessionToken', component: PageHome, role: '100,500,200,210,300,310,400' }, // 1
@@ -78,8 +80,9 @@ const lp = {
   '/login': { route: '/login', path: '/login', component: LoginPageContainer, role: '100,500,200,210,300,310,400' },
   '/signup': { route: '/signup', path: '/signup/:sessionToken', component: SignupPageContainer, role: '100,500,200,210,300,310,400' },
   '/qrcode/generate': { route: '/qrcode/generate', path: '/qrcode/generate/:sessionToken', component: GenerateQrcodePageContainer, role: '100,500,200,210,300,310,400' },
-  '/my-profile': { route: '/my-profile', path: '/my-profile/:sessionToken', component: MyProfilePage, role: '100,500,200,210,300,310,400' },
-  '/edit-my-profile': { route: '/edit-my-profile', path: '/edit-my-profile/:sessionToken', component: MyProfilePage, role: '100,500,200,210,300,310,400' }
+  '/user-profile': { route: '/user-profile', path: '/user-profile/:userid/:sessionToken', component: PageUserProfile, role: '100,500,200,210,300,310,400' },
+  '/my-profile': { route: '/my-profile', path: '/my-profile/:sessionToken', component: PageMyProfile, role: '100,500,200,210,300,310,400' },
+  '/edit-my-profile': { route: '/edit-my-profile', path: '/edit-my-profile/:sessionToken', component: PageMyProfile, role: '100,500,200,210,300,310,400' }
   // '/': {route: '/', path: '/:sessionToken', component: PageHome, role: '100,500,200,210,300,310,400'} // 0
 }
 // _.map({ 'a': 4, 'b': 8 }, square);

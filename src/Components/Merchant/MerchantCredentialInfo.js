@@ -39,14 +39,10 @@ export default class MerchantCredentialInfo extends Component {
     const status = now >= dtFrom && now <= dtTo ? 'ACTIVE' : 'INACTIVE'
     return (
       <dl className='dl-horizontal'>
-        <dt>Key ID</dt>
+        <dt>Merchant Key ID</dt>
         <dd>{keyId}</dd>
-        <dt>Merchant ID</dt>
+        <dt>Merchant Id</dt>
         <dd>{merchantId}</dd>
-        <dt>Frontend Url</dt>
-        <dd>{frontendCallbackUrl}</dd>
-        <dt>Backend Url</dt>
-        <dd>{backendCallbackUrl}</dd>
         <dt>Current Secret Key</dt>
         <dd>{merchantSecretKey}</dd>
         <dt>RSA Key</dt>

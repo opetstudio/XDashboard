@@ -23,7 +23,7 @@ class HeaderComponent extends Component {
             <a className='nav-link' data-widget='pushmenu' href='#'><i className='fas fa-bars' /></a>
           </li>
           <li className='nav-item d-sm-inline-block'>
-            <h3 style={{ marginBottom: 0, marginTop: 4 }}>{this.props.pageTitle}</h3>
+            {/* <h3 style={{ marginBottom: 0, marginTop: 4 }}>{this.props.pageTitle}</h3> */}
           </li>
           {/* <li className='nav-item d-none d-sm-inline-block'>
               <a href='index3.html' className='nav-link'>Home</a>

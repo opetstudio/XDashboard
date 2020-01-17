@@ -24,12 +24,12 @@ class PageLogin extends Component {
           <div className='card-body login-card-body'>
             <p className='login-box-msg'>Sign in to start your session</p>
             <LoginContainer location={this.props.location} />
-            <p className='mb-1'>
+            {/* <p className='mb-1'>
               <a href='#'>I forgot my password</a>
             </p>
             <p className='mb-0'>
               <a href='#' className='text-center'>Register a new membership</a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

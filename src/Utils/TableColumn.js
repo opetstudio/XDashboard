@@ -198,45 +198,68 @@ export const getUserColumn = () => {
   ]
 }
 export const getMbddEventsColumn = () => {
-  return [{
-    id: 'ecomRefNo',
-    Header: 'Pg Ref No',
-    accessor: 'ecomRefNo' // String-based value accessors!
-  }, {
-    id: 'eventName', // Required because our accessor is not a string
-    Header: 'Event Name',
-    accessor: d => d.eventName, // Custom value accessors!,
-    Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-  },
-  {
-    id: 'mbddRd',
-    Header: props => <span>mbddRd</span>, // Custom header components!
-    accessor: 'mbddRd'
+  return [
+    {
+      id: 'id',
+      Header: 'Act',
+      accessor: d => d.id,
+      Cell: props => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => alert('cek' + props.value)}>Detail</button></div>
+      // Cell: p => <div className='btn-group'><button type='button' className='btn btn-success' onClick={() => {}}>Detail</button></div>
+    },
+    {
+      id: 'ecomRefNo',
+      Header: 'Pg Ref No',
+      accessor: 'ecomRefNo' // String-based value accessors!
+    },
+    {
+      id: 'mercRefNo',
+      Header: 'mercRefNo',
+      accessor: 'mercRefNo' // String-based value accessors!
+    },
+    // {
+    //   id: 'eventName', // Required because our accessor is not a string
+    //   Header: 'Event Name',
+    //   accessor: d => d.eventName, // Custom value accessors!,
+    //   Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+    // },
+    {
+      id: 'latestLogName',
+      Header: props => <span>latestLogName</span>, // Custom header components!
+      accessor: 'latestLogName'
     // accessor: 'friend.age'
-  },
-  {
-    id: 'sessionToken',
-    Header: props => <span>sessionToken</span>, // Custom header components!
-    accessor: 'sessionToken'
+    },
+    {
+      id: 'mbddRd',
+      Header: props => <span>mbddRd</span>, // Custom header components!
+      accessor: 'mbddRd'
     // accessor: 'friend.age'
-  },
-  {
-    id: 'actionId',
-    Header: props => <span>actionId</span>, // Custom header components!
-    accessor: 'actionId'
+    },
+    {
+      id: 'sessionToken',
+      Header: props => <span>sessionToken</span>, // Custom header components!
+      accessor: 'sessionToken'
     // accessor: 'friend.age'
-  },
-  {
-    id: 'isComplete',
-    Header: props => <span>isComplete</span>, // Custom header components!
-    accessor: 'isComplete'
+    },
+    // {
+    //   id: 'actionId',
+    //   Header: props => <span>actionId</span>, // Custom header components!
+    //   accessor: 'actionId'
+    // // accessor: 'friend.age'
+    // },
+    {
+      id: 'isComplete',
+      Header: props => <span>isComplete</span>, // Custom header components!
+      accessor: d => {
+        if (d.isComplete === 'Y') return 'Y'
+        else return 'N'
+      }
     // accessor: 'friend.age'
-  },
-  {
-    id: 'createdUnixtime',
-    Header: props => <span>Created</span>, // Custom header components!
-    accessor: d => d.createdUnixtime && `${Moment(parseInt(d.createdUnixtime))}`
+    },
+    {
+      id: 'createdUnixtime',
+      Header: props => <span>Created</span>, // Custom header components!
+      accessor: d => d.createdUnixtime && `${Moment(parseInt(d.createdUnixtime))}`
     // accessor: 'friend.age'
-  }
+    }
   ]
 }

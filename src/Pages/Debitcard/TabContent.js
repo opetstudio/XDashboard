@@ -9,13 +9,14 @@ import FieldText from '../../Containers/Pagination/FieldText'
 export default class TabContent extends Component {
   render () {
     const { eventName, actionId, table } = this.props
+    console.log('TabContent=======>', this.props)
     return (
       <div style={{ marginTop: 10 }}>
         <Filter table={table} columns={getMbddEventsColumn()} datasource='mbddEvents'>
           <div className='row'>
             <div className='col-md-6'>
               <FieldText table={table} name='ecomRefNo' id={`${table}1`} label='Pg Ref No' type='text' placeholder='Pg Ref. No' defaultValue='' />
-              <FieldText hidden table={table} name='eventName' id={`${table}2`} label='' type='text' placeholder='' defaultValue={eventName} />
+              <FieldText hidden table={table} name='eventName' id={`${table}2`} label='' type='text' placeholder='' defaultValue={eventName} constantValue={eventName} />
               <FieldText hidden table={table} name='actionId' id={`${table}3`} label='' type='text' placeholder='' defaultValue={actionId} />
             </div>
             <div className='col-md-6' />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import LoginCheck from '../../Containers/Login/LoginCheck'
-// import ContentHeader from '../../Components/ContentHeader'
+import ContentHeader from '../../Components/ContentHeader'
 import Tabs from '../../Components/Tabs'
 import TabContent from './TabContent'
 
@@ -22,17 +22,18 @@ export default class PagePayment extends Component {
           <title>Payment</title>
           <body className='hold-transition skin-blue sidebar-mini' />
         </Helmet>
-        {/* <ContentHeader
-          title='Bind Card'
-          breadcrumb={[{ title: 'Debit Card', link: '#' }, { title: 'Bind Card', link: null, isActive: true }]}
-        /> */}
+        <ContentHeader
+          title='Payment'
+          breadcrumb={[{ title: 'Debit Card', link: '#' }, { title: 'Payment', link: null, isActive: true }]}
+        />
         <section className='content'>
           <div className='container-fluid'>
             <Tabs
               tabNav={[
                 { title: 'Initialization', id: 'home', ariaSelected: 'true', active: 'active', content: (<TabContent table={`tb${actionId}initialization`} actionId={actionId} eventName='INITIALIZATION' />) },
                 { title: 'Authentication', id: 'authentication', ariaSelected: 'false', active: '', content: (<TabContent table={`tb${actionId}authentication`} actionId={actionId} eventName='AUTHENTICATION' />) },
-                { title: 'Charge', id: 'charge', ariaSelected: 'false', active: '', content: (<TabContent table={`tb${actionId}charge`} actionId={actionId} eventName='CHARGE' />) }
+                { title: 'Charge', id: 'charge', ariaSelected: 'false', active: '', content: (<TabContent table={`tb${actionId}charge`} actionId={actionId} eventName='CHARGE' />) },
+                { title: 'Callback', id: 'mbddcallback', ariaSelected: 'false', active: '', content: (<TabContent table={`tb${actionId}mbddcallback`} actionId={actionId} eventName='MBDDCALLBACK' />) }
               ]}
             />
           </div>

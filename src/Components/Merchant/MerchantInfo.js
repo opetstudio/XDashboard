@@ -32,7 +32,9 @@ export default class MerchantInfo extends Component {
       merchantMobileNo,
       merchantEmail,
       createdDt,
-      addr
+      addr,
+      frontendCallbackUrl,
+      backendCallbackUrl
     } = this.props.merchantDetail || {}
 
     if (this.props.isRequesting) return <Loader loading />
@@ -44,6 +46,10 @@ export default class MerchantInfo extends Component {
         <dd>{instCd}</dd>
         <dt>website</dt>
         <dd>{website}</dd>
+        <dt>Frontend Url</dt>
+        <dd>{frontendCallbackUrl}</dd>
+        <dt>Backend Url</dt>
+        <dd>{backendCallbackUrl}</dd>
         <dt>Merchant Mobile Number</dt>
         <dd>{merchantMobileNo}</dd>
         <dt>Merchant Email</dt>

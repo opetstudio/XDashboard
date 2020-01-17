@@ -51,7 +51,9 @@ export default {
           merchantMobileNo: '085342805673',
           merchantEmail: 'tokotok@gmail.com',
           createdDt: '2019-10-10 13:00:00',
-          addr: 'Menteng, Jakarta Selatan'
+          addr: 'Menteng, Jakarta Selatan',
+          frontendCallbackUrl: 'http://frontend.tokotok.com',
+          backendCallbackUrl: 'http://backend.tokotok.com'
         }
       }
     }
@@ -64,8 +66,8 @@ export default {
         responseMessage: 'SUCCESS',
         responseDescription: 'SUCCESS',
         data: {
-          keyId: 'keyIdxxxx',
-          merchantId: '8afb8b146d7212fa016d721bb5970005',
+          keyId: '8afb8b146d7212fa016d721bb5970005',
+          merchantId: '000000070070071',
           merchantSecretKey: 'xxxxxxxmerchantSecretKey',
           publicKey: 'adfadfasdfasdfasfdsfdfadsfadsfdfdfdfdfdf',
           validFrom: '2019-10-10 13:00:00',

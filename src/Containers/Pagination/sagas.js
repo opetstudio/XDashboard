@@ -17,6 +17,8 @@ export function * submitFilter (api, action) {
     // rows = {}
   } else {
     submitFilterMSG.rd = path(['problem'], response)
+    submitFilterMSG.rm = 'GENERAL_ERROR'
+    submitFilterMSG.rc = '99'
   }
   yield put(PaginationActions.submitFilterDone({ table, rows, submitFilterMSG, page, totalPages, size }))
 }
