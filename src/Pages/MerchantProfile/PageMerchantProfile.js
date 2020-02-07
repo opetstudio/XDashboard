@@ -24,34 +24,41 @@ class PageMerchantProfile extends Component {
           breadcrumb={[{ title: 'Administration', link: '#' }, { title: 'Merchant Profile', link: null, isActive: true }]}
         />
         <section className='content'>
-          <form className='form' onSubmit={e => this._onSubmitForm(e)}>
-            <div className='card'>
-              <div className='card-header'>
-                <h5 className='card-title'>Merchant Information</h5>
-                <div className='card-tools'>
-                  <button type='button' className='btn btn-tool' data-card-widget='collapse'>
-                    <i className='fas fa-minus' />
-                  </button>
-                </div>
-              </div>
-              <div className='card-body'>
-                <MerchantInfo />
-              </div>
-              <div className='card-footer'>
-                <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-6'>
+                <div className='card card-primary card-outline'>
+                  <div className='card-header'>
+                    <h3 className='card-title'>Merchant Information</h3>
+                    {/* <div className='card-tools'>
+                      <button type='button' className='btn btn-tool' data-card-widget='collapse'>
+                        <i className='fas fa-minus' />
+                      </button>
+                    </div> */}
+                  </div>
+                  <div className='card-body'>
+                    <MerchantInfo />
+                  </div>
+                  <div className='card-footer'>
+                    <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
                   Edit Profile
-                </button>
-              </div>
+                    </button>
+                  </div>
 
-              {/* <div className='box-footer'> */}
-              {/* <button type='button' className='btn btn-primary' onClick={(e) => <Redirect to={`${basePath}/edit-profile/${getAccessToken(this.props.sessionToken)}`} />}> */}
-              {/* <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
+                  {/* <div className='box-footer'> */}
+                  {/* <button type='button' className='btn btn-primary' onClick={(e) => <Redirect to={`${basePath}/edit-profile/${getAccessToken(this.props.sessionToken)}`} />}> */}
+                  {/* <button type='button' className='btn btn-primary' onClick={(e) => this.props.history.push(`${basePath}/merchant/edit-profile/${getAccessToken(this.props.sessionToken)}`)}>
                   Edit Profile
                 </button> */}
-              {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
-              {/* </div> */}
+                  {/* <button type="submit" className="btn btn-info pull-right">Sign in</button> */}
+                  {/* </div> */}
+                </div>
+              </div>
+              <div className='col-md-6'>
+                {/*  */}
+              </div>
             </div>
-          </form>
+          </div>
         </section>
       </div>
     )

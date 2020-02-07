@@ -51,6 +51,7 @@ export default class FilterTransaction extends Component {
     if (this.props.table === 'trxForRefundReview') return this.props.tablepaginationFetchAllTrxForRefundReview({})
     if (this.props.table === 'trxForRefundRequest') return this.props.tablepaginationFetchAllTrxForRefundRequest({})
     if (this.props.table === 'trxForRefundReport') return this.props.tablepaginationFetchAllTrxForRefundRequest({})
+    if (this.props.table === 'trxForVAReport') return this.props.tablepaginationFetchAllTrxForVaReport({})
     return this.props.tablepaginationReadRequest({})
   }
 
@@ -106,6 +107,20 @@ export default class FilterTransaction extends Component {
           </div>
         </div>
       )
+    } else if (type === 'trxForVAReport') {
+      return (
+        <div className='row'>
+          <div className='col-md-6'>
+            {this._renderFormGroup('text', 'Merchant Ref. No', 'merchantRefNo', 'Merchant Ref No')}
+          </div>
+          <div className='col-md-6'>
+            {/* {!this.props.withoutStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'SETLD', label: 'Settle' }, { value: 'PNDNG', label: 'Pending' }, { value: 'REJEC', label: 'Reject' }])} */}
+            {/* {this.props.withRefundStatus && this._renderFormGroup('select', 'Status', 'transactionStatus', 'Status', [{ value: '', label: '-- select status --' }, { value: 'REFREQ', label: 'Refund Request' }, { value: 'REFAPP', label: 'Refund Approve' }, { value: 'REFREJ', label: 'Refund Reject' }])} */}
+            {this._renderFormGroup('datepicker', 'Payment Date', 'transactionStartDate', 'Range Payment Date')}
+            {/* {this._renderFormGroup('datepicker', 'End Date', 'transactionEndDate', 'End Date')} */}
+          </div>
+        </div>
+      )
     } else {
       return (
         <div className='row'>
@@ -135,7 +150,7 @@ export default class FilterTransaction extends Component {
       <form className='form' onSubmit={(e) => this._formOnSubmit(e)}>
         <div className='card'>
           <div className='card-header'>
-            <h5 className='card-title'>Transaction Filter</h5>
+            <h5 className='card-title'>Data Filter</h5>
             <div className='card-tools'>
               <button id='myCardWidget' type='button' className='btn btn-tool' data-card-widget='collapse'>
                 <i className='fas fa-minus' />
@@ -149,7 +164,7 @@ export default class FilterTransaction extends Component {
           </div>
           <div className='card-footer'>
             <button type='submit' className='btn btn-info' style={{ marginRight: 5 }}>
-              <i className='fas fa-search' /> Searchh
+              <i className='fas fa-search' /> Search
             </button>
             <button type='button' className='btn btn-info' onClick={this._resetFilter} style={{ marginRight: 5 }}><i className='fas fa-close' /> Reset</button>
             {!this.props.type &&

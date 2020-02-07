@@ -5,6 +5,7 @@ import Moment from 'moment'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
+  tablepaginationFetchAllTrxForVaReport: ['data'],
   tablepaginationFetchAllTrxForRefundReview: ['data'],
   tablepaginationFetchAllTrxForRefundRequest: ['data'],
   tablepaginationFetchAllUser: ['data'],
@@ -97,6 +98,11 @@ export const tablepaginationFetchAllTrxForRefundReview = (state, { data }) => {
   data.isRequesting = true
   return tablepaginationReadRequestPatch(state, { data })
 }
+export const tablepaginationFetchAllTrxForVaReport = (state, { data }) => {
+  console.log('redux tablepaginationFetchAllTrxForVAReport invoked ', data)
+  data.isRequesting = true
+  return tablepaginationReadRequestPatch(state, { data })
+}
 export const tablepaginationResetFilter = (state, action) => {
   let mergeData = {
     bankRefNo: '',
@@ -161,6 +167,7 @@ export const tablepaginationReadRequestPatch = (state, { data }) => {
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.TABLEPAGINATION_FETCH_ALL_TRX_FOR_VA_REPORT]: tablepaginationFetchAllTrxForVaReport,
   [Types.TABLEPAGINATION_FETCH_ALL_TRX_FOR_REFUND_REVIEW]: tablepaginationFetchAllTrxForRefundReview,
   [Types.TABLEPAGINATION_FETCH_ALL_TRX_FOR_REFUND_REQUEST]: tablepaginationFetchAllTrxForRefundRequest,
   [Types.TABLEPAGINATION_FETCH_ALL_USER]: tablepaginationFetchAllUser,

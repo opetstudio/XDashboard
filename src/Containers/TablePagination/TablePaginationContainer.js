@@ -7,6 +7,7 @@ import TablepaginationUser from '../../Components/Tablepagination/Tablepaginatio
 import TableTrxForRefundRequest from '../../Components/Tablepagination/TableTrxForRefundRequest'
 import TableTrxForRefundReport from '../../Components/Tablepagination/TableTrxForRefundReport'
 import TableTrxForRefundReview from '../../Components/Tablepagination/TableTrxForRefundReview'
+import TableTrxForVAReport from '../../Components/Tablepagination/TableTrxForVAReport'
 
 class TheComponent extends React.PureComponent {
   render () {
@@ -15,6 +16,7 @@ class TheComponent extends React.PureComponent {
     if (this.props.table === 'trxForRefundReport') return (<TableTrxForRefundReport {...this.props} />)
     if (this.props.table === 'trxForRefundRequest') return (<TableTrxForRefundRequest {...this.props} />)
     if (this.props.table === 'trxForRefundReview') return (<TableTrxForRefundReview {...this.props} />)
+    if (this.props.table === 'trxForVAReport') return (<TableTrxForVAReport {...this.props} />)
     return (<TablepaginationListPageComponent {...this.props} />
     )
   }
@@ -33,6 +35,7 @@ const mapDispatchToProps = dispatch => {
   return {
     tablepaginationReadRequest: query => dispatch(TablepaginationActions.tablepaginationReadRequest(query)),
     tablepaginationFetchAllUser: query => dispatch(TablepaginationActions.tablepaginationFetchAllUser(query)),
+    tablepaginationFetchAllTrxForVaReport: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForVaReport(query)),
     tablepaginationFetchAllTrxForRefundRequest: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForRefundRequest(query)),
     tablepaginationFetchAllTrxForRefundReview: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForRefundReview(query))
   }

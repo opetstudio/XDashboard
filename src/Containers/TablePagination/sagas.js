@@ -47,6 +47,41 @@ export const getMerchantCode = (userRole, data, s) => {
 }
 export const transformedData = response => getAttributes(response.data)
 
+export function * tablepaginationFetchAllTrxForVaReport (api, action) {
+  console.log('tablepaginationFetchAllTrxForVaReport action', action)
+  const { data } = action
+  const s = yield select(session)
+  const fltr = yield select(filter)
+  const encryptedAccessToken = getAccessToken(s.sessionToken)
+  let userRole = parseInt(s.userRole)
+  let merchantCode = getMerchantCode(userRole, data, s)
+  let page = data['page'] || fltr.page
+  let pageSize = data['pageSize'] || fltr.pageSize
+  let pages = 0
+  const response = yield call(api.tablepaginationFetchAllTrxForVaReport, {...data, ...fltr, merchantCode, page, pageSize}, {encryptedAccessToken, url: data.url, userMerchantCode: s.userMerchantCode, userMerchantId: s.userMerchantId})
+  console.log('response======>>>>>', response)
+  let dataTablepagination = []
+  let responseCode = path(['data', 'responseCode'], response)
+  let responseMessage = path(['data', 'responseMessage'], response)
+  let responseDescription = path(['data', 'responseDescription'], response)
+  if (response.ok) {
+    if (responseCode === 'MBDD04') {
+      // invalid session token. redirect to logout
+      yield put(TablepaginationActions.tablepaginationReadRequestPatch({isRequesting: false, responseCode, responseMessage, dataTablepagination, pages, pageSize, page}))
+      return yield put(LoginActions.loginRemoveSuccess({}))
+    }
+    dataTablepagination = path(['data', 'virtualAccountReport', 'reports'], response) || []
+    pages = path(['data', 'virtualAccountReport', 'pages'], response) || 0
+    responseCode = responseCode || 'MBDD00'
+    responseMessage = responseMessage || 'SUCCESS'
+  } else {
+    dataTablepagination = []
+    responseCode = 'MBDD99'
+    responseMessage = 'FAILED_SYSTEM'
+    responseDescription = path(['problem'], response)
+  }
+  yield put(TablepaginationActions.tablepaginationReadRequestPatch({isRequesting: false, responseCode, responseMessage, dataTablepagination, pages, responseDescription, pageSize, page}))
+}
 export function * tablepaginationFetchAllTrxForRefundReview (api, action) {
   console.log('tablepaginationFetchAllTrxForRefundReview action', action)
   const { data } = action

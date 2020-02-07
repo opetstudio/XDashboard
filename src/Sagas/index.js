@@ -52,7 +52,7 @@ import {
 import {transactionFetchOne, transactionRefundFetchOne, transactionRefundRequest} from '../Containers/Transaction/sagas'
 import {userCreateRequest, userReadRequest} from '../Containers/User/sagas'
 import {paymentgwCreateRequest, paymentgwReadRequest} from '../Containers/Paymentgw/sagas'
-import {tablepaginationReadRequest, tablepaginationFetchAllUser, tablepaginationFetchAllTrxForRefundRequest, tablepaginationFetchAllTrxForRefundReview} from '../Containers/TablePagination/sagas'
+import { tablepaginationReadRequest, tablepaginationFetchAllUser, tablepaginationFetchAllTrxForRefundRequest, tablepaginationFetchAllTrxForRefundReview, tablepaginationFetchAllTrxForVaReport } from '../Containers/TablePagination/sagas'
 import { dashbaordFetch } from '../Containers/Dashboard/sagas'
 import { bankFetchCredential } from '../Containers/Bank/sagas'
 import { submitFilter } from '../Containers/Pagination/sagas'
@@ -138,6 +138,7 @@ export default function * root () {
     takeLatest(LoginTypes.LOGIN_DO_LOGIN, loginDoLogin, apiDashboard),
     takeLatest(LoginTypes.LOGIN_CHECK_STATUS, loginCheckStatus, apiDashboard),
 
+    takeLatest(TablepaginationTypes.TABLEPAGINATION_FETCH_ALL_TRX_FOR_VA_REPORT, tablepaginationFetchAllTrxForVaReport, API.create(hostBackend + '')),
     takeLatest(TablepaginationTypes.TABLEPAGINATION_READ_REQUEST, tablepaginationReadRequest, apiDashboard),
     takeLatest(TablepaginationTypes.TABLEPAGINATION_FETCH_ALL_USER, tablepaginationFetchAllUser, apiDashboard),
     takeLatest(TablepaginationTypes.TABLEPAGINATION_FETCH_ALL_TRX_FOR_REFUND_REQUEST, tablepaginationFetchAllTrxForRefundRequest, apiDashboard),

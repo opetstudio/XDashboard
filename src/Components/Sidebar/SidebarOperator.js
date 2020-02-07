@@ -46,15 +46,15 @@ class SidebarMerchantSupport extends Component {
             {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')} */}
         {/* </ul> */}
         {/* </li> */}
-        {/* <li className='nav-item has-treeview menu-open'> */}
-        {/* <Link to='#' className='nav-link'><i className='nav-icon fas fa-copy' /><p>Virtual Accounts<i className='fas fa-angle-left right' /></p></Link> */}
-        {/* <ul className='nav nav-treeview'> */}
-        {/* {this.props.getMenuLi('/report', 'Payment Report')} */}
-        {/* {this.props.getMenuLi('/transaction/refund-report', 'Refund Report')}
-        {this.props.getMenuLi('/transaction/refund-request', 'Refund Request')}
-        {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')} */}
-        {/* </ul> */}
-        {/* </li> */}
+        <li className='nav-item has-treeview menu-open'>
+          <Link to='#' className='nav-link'><i className='nav-icon fas fa-copy' /><p>Virtual Accounts<i className='fas fa-angle-left right' /></p></Link>
+          <ul className='nav nav-treeview'>
+            {this.props.getMenuLi('/virtual-acount/report', 'Virtual Account Report')}
+            {/* {this.props.getMenuLi('/transaction/refund-report', 'Refund Report')}
+            {this.props.getMenuLi('/transaction/refund-request', 'Refund Request')}
+            {this.props.getMenuLi('/transaction/refund-review', 'Refund Review')} */}
+          </ul>
+        </li>
         <li className='nav-item has-treeview menu-open'>
           <Link to='#' className='nav-link'><i className='nav-icon fas fa-copy' /><p>Refund<i className='fas fa-angle-left right' /></p></Link>
           <ul className='nav nav-treeview'>

@@ -36,6 +36,7 @@ import PagePayment from '../Pages/Debitcard/PagePayment'
 import PageUnbindCard from '../Pages/Debitcard/PageUnbindCard'
 import PageChangeLimit from '../Pages/Debitcard/PageChangeLimit'
 import PageUserProfile from '../Pages/UserProfile/PageUserProfile'
+import PageVirtualacountReport from '../Pages/Virtualacount/PageVirtualacountReport'
 
 // import LoginPageContainer from '../Containers/Login/LoginPageContainer'
 import SignupPageContainer from '../Containers/Signup/SignupPageContainer'
@@ -64,6 +65,7 @@ const lp = {
   '/user/change-limit': { route: '/user/change-limit', path: '/user/change-limit/:sessionToken', component: UserChangeLimitPageContainer, role: '100,500,200,210,300,310,400' },
   '/user/list': { route: '/user/list', path: '/user/list/:sessionToken', component: PageListUser, role: '100,500,200,210,300,310,400' },
   '/report': { route: '/report', path: '/report/:sessionToken', component: PagePaymentReport, role: '100,500,200,210,300,310,400' },
+  '/virtual-acount/report': { route: '/virtual-acount/report', path: '/virtual-acount/report/:sessionToken', component: PageVirtualacountReport, role: '100,500,200,210,300,310,400' },
   '/debitcard/bind-card': { route: '/debitcard/bind-card', path: '/debitcard/bind-card/:sessionToken', component: PageBindCard, role: '100,500,200,210,300,310,400' },
   '/debitcard/unbind-card': { route: '/debitcard/unbind-card', path: '/debitcard/unbind-card/:sessionToken', component: PageUnbindCard, role: '100,500,200,210,300,310,400' },
   '/debitcard/bind-and-pay': { route: '/debitcard/bind-and-pay', path: '/debitcard/bind-and-pay/:sessionToken', component: PageBindAndPay, role: '100,500,200,210,300,310,400' },

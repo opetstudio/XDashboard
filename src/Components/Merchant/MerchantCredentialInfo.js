@@ -38,25 +38,29 @@ export default class MerchantCredentialInfo extends Component {
     const now = new Date()
     const status = now >= dtFrom && now <= dtTo ? 'ACTIVE' : 'INACTIVE'
     return (
-      <dl className='dl-horizontal'>
-        <dt>Merchant Key ID</dt>
-        <dd>{keyId}</dd>
-        <dt>Merchant Id</dt>
-        <dd>{merchantId}</dd>
-        <dt>Current Secret Key</dt>
-        <dd>{merchantSecretKey}</dd>
-        <dt>RSA Key</dt>
-        <dd>{publicKey}</dd>
-        <dt>Valid From</dt>
-        <dd>{Moment(validFrom).format('YYYY-MM-DD hh:mm:ss')}</dd>
-        <dt>Valid To</dt>
-        <dd>{Moment(validTo).format('YYYY-MM-DD hh:mm:ss')}</dd>
-        <dt>Status</dt>
-        <dd>{status}</dd>
-        {/* <dt>Remark</dt>
-        <dd>{remark}</dd> */}
-        {/* <dt>Updated Date</dt>
-        <dd>{updatedDate}</dd> */}
-      </dl>)
+      <div>
+        <strong><i className='fas fa-book mr-1' /> Merchant Key ID</strong>
+        <p className='text-muted'>{keyId}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Merchant Id</strong>
+        <p className='text-muted'>{merchantId}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Current Secret Key</strong>
+        <p className='text-muted'>{merchantSecretKey}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> RSA Key</strong>
+        <p className='text-muted'>{publicKey}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Valid From</strong>
+        <p className='text-muted'>{Moment(validFrom).format('YYYY-MM-DD hh:mm:ss')}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Valid To</strong>
+        <p className='text-muted'>{Moment(validTo).format('YYYY-MM-DD hh:mm:ss')}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Status</strong>
+        <p className='text-muted'>{status}</p>
+        {/* <hr /> */}
+      </div>
+    )
   }
 }

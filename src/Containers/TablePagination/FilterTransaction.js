@@ -36,6 +36,7 @@ const mapDispatchToProps = dispatch => {
     tablepaginationFetchAllUser: query => dispatch(TablepaginationActions.tablepaginationFetchAllUser(query)),
     tablepaginationFetchAllTrxForRefundRequest: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForRefundRequest(query)),
     tablepaginationFetchAllTrxForRefundReview: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForRefundReview(query)),
+    tablepaginationFetchAllTrxForVaReport: query => dispatch(TablepaginationActions.tablepaginationFetchAllTrxForVaReport(query)),
     tablepaginationReadRequestPatch: query => dispatch(TablepaginationActions.tablepaginationReadRequestPatch(query)),
     tablepaginationResetFilter: query => dispatch(TablepaginationActions.tablepaginationResetFilter(query))
   }

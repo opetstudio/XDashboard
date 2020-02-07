@@ -20,24 +20,31 @@ class PageMerchantCredential extends Component {
           breadcrumb={[{ title: 'Administration', link: '#' }, { title: 'Merchant Credential', link: null, isActive: true }]}
         />
         <section className='content'>
-          <form onSubmit={e => this._onSubmitForm(e)}>
-            <div className='card'>
-              <div className='card-header'>
-                <h3 className='card-title'>Merchant Credential</h3>
-                <div className='card-tools'>
-                  <button type='button' className='btn btn-tool' data-card-widget='collapse'>
-                    <i className='fas fa-minus' />
-                  </button>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-md-6'>
+                <div className='card card-primary card-outline'>
+                  <div className='card-header'>
+                    <h3 className='card-title'>Merchant Credential</h3>
+                    <div className='card-tools'>
+                      <button type='button' className='btn btn-tool' data-card-widget='collapse'>
+                        <i className='fas fa-minus' />
+                      </button>
+                    </div>
+                  </div>
+                  <div className='card-body'>
+                    <MerchantCredentialInfo />
+                  </div>
+                  <div className='card-footer'>
+                    {/*  */}
+                  </div>
                 </div>
               </div>
-              <div className='card-body'>
-                <MerchantCredentialInfo />
-              </div>
-              <div className='card-footer'>
+              <div className='col-md-6'>
                 {/*  */}
               </div>
             </div>
-          </form>
+          </div>
         </section>
       </div>
     )

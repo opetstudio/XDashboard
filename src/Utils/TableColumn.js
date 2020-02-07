@@ -197,6 +197,70 @@ export const getUserColumn = () => {
   }
   ]
 }
+
+// consumerUsername: "Devi C W H class : XII-IPA.1"
+// payDt: "2020-02-02T00:59:13.000+0000"
+// coDt: "2020-02-02T00:59:13.000+0000"
+// pymtMethodNm: "CIMBVA"
+// paySts: "APRVD"
+// mercRefNo: "170114542"
+// consBnkCardNo: "2669170114542"
+// coCcyAmt: 925000
+// mercNm: "Yayasan Winayabhakti"
+// mercCd: "19YW0904"
+// coCcyCd: "IDR"
+export const getVirtualAccountReportColumn = ({ history, sessionToken }) => {
+  return [
+    {
+      id: 'mercRefNo',
+      Header: 'mercRefNo',
+      accessor: 'mercRefNo' // String-based value accessors! 
+    },
+    {
+      id: 'consBnkCardNo',
+      Header: 'consBnkCardNo',
+      accessor: 'consBnkCardNo' // String-based value accessors! 
+    },
+    {
+      id: 'consumerUsername',
+      Header: 'Cons Name',
+      accessor: 'consumerUsername' // String-based value accessors! 
+    },
+    {
+      id: 'pymtMethodNm',
+      Header: 'Method',
+      accessor: 'pymtMethodNm' // String-based value accessors! 
+    },
+    {
+      id: 'mercNm',
+      Header: 'mercNm',
+      accessor: 'mercNm' // String-based value accessors! 
+    },
+    {
+      id: 'coCcyAmt', // Required because our accessor is not a string
+      Header: 'Amount',
+      accessor: d => d.coCcyAmt, // Custom value accessors!,
+      Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+    },
+    {
+      id: 'payDt',
+      Header: props => <span>Payment Date</span>,
+      accessor: d => Moment(d.payDt).format('YYYY-MM-DD HH:mm:ss')
+      // accessor: 'friend.age'
+    },
+    {
+      id: 'coDt',
+      Header: props => <span>coDt</span>,
+      accessor: d => Moment(d.coDt).format('YYYY-MM-DD HH:mm:ss')
+      // accessor: 'friend.age'
+    },
+    {
+      id: 'paySts',
+      Header: 'Status',
+      accessor: 'paySts'
+    }
+  ]
+}
 export const getMbddEventsColumn = () => {
   return [
     {
@@ -263,3 +327,4 @@ export const getMbddEventsColumn = () => {
     }
   ]
 }
+

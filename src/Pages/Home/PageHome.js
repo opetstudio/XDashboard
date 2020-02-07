@@ -127,7 +127,7 @@ class PageHome extends Component {
         {/* Content Header (Page header) */}
         <ContentHeader
           title='Dashboard'
-          breadcrumb={[{ title: 'Home', link: '#' }, { title: 'Dashboard v2', link: null, isActive: true }]}
+          breadcrumb={[{ title: 'Home', link: '#' }, { title: 'Dashboard', link: null, isActive: true }]}
         />
         {/* /.content-header */}
         {/* Main content */}

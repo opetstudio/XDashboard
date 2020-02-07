@@ -39,25 +39,56 @@ export default class MerchantInfo extends Component {
 
     if (this.props.isRequesting) return <Loader loading />
     return (
-      <dl className='dl-horizontal'>
-        <dt>Merchant Name</dt>
-        <dd>{nm}</dd>
-        <dt>Merchant Code</dt>
-        <dd>{instCd}</dd>
-        <dt>website</dt>
-        <dd>{website}</dd>
-        <dt>Frontend Url</dt>
-        <dd>{frontendCallbackUrl}</dd>
-        <dt>Backend Url</dt>
-        <dd>{backendCallbackUrl}</dd>
-        <dt>Merchant Mobile Number</dt>
-        <dd>{merchantMobileNo}</dd>
-        <dt>Merchant Email</dt>
-        <dd>{merchantEmail}</dd>
-        <dt>Created Date Time</dt>
-        <dd>{createdDt}</dd>
-        <dt>Address</dt>
-        <dd>{addr}</dd>
-      </dl>)
+      <div>
+        <strong><i className='fas fa-book mr-1' /> Merchant Name</strong>
+        <p className='text-muted'>{nm}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Merchant Code</strong>
+        <p className='text-muted'>{instCd}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Website</strong>
+        <p className='text-muted'>{website}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Frontend Url</strong>
+        <p className='text-muted'>{frontendCallbackUrl}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Backend Url</strong>
+        <p className='text-muted'>{backendCallbackUrl}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Merchant Mobile Number</strong>
+        <p className='text-muted'>{merchantMobileNo}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Merchant Email</strong>
+        <p className='text-muted'>{merchantEmail}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Created Date Time</strong>
+        <p className='text-muted'>{createdDt}</p>
+        <hr />
+        <strong><i className='fas fa-book mr-1' /> Address</strong>
+        <p className='text-muted'>{addr}</p>
+        {/* <hr /> */}
+      </div>
+    )
   }
 }
+
+// {/* <dl className='dl-horizontal'>
+//         <dt>Merchant Name</dt>
+//         <dd>{nm}</dd>
+//         <dt>Merchant Code</dt>
+//         <dd>{instCd}</dd>
+//         <dt>website</dt>
+//         <dd>{website}</dd>
+//         <dt>Frontend Url</dt>
+//         <dd>{frontendCallbackUrl}</dd>
+//         <dt>Backend Url</dt>
+//         <dd>{backendCallbackUrl}</dd>
+//         <dt>Merchant Mobile Number</dt>
+//         <dd>{merchantMobileNo}</dd>
+//         <dt>Merchant Email</dt>
+//         <dd>{merchantEmail}</dd>
+//         <dt>Created Date Time</dt>
+//         <dd>{createdDt}</dd>
+//         <dt>Address</dt>
+//         <dd>{addr}</dd>
+//       </dl> */}
