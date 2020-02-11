@@ -1,10 +1,19 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Helmet from 'react-helmet'
 import ContentVirtualacountReport from './ContentVirtualacountReport'
 import LoginCheck from '../../Containers/Login/LoginCheck'
 import ContentHeader from '../../Components/ContentHeader'
 
-export default class PageVirtualacountReport extends Component {
+// const TheProps = {
+//   userMerchantCode: '', isRequesting: false, history: {}, sessionToken: ''
+// }
+export interface Props {
+  history: any;
+  userMerchantCode: string;
+  isRequesting: boolean;
+  sessionToken: string;
+}
+export default class PageVirtualacountReport extends PureComponent<Props> {
   render () {
     console.log('render')
     return (
@@ -18,7 +27,7 @@ export default class PageVirtualacountReport extends Component {
           title='Virtual Account Report'
           breadcrumb={[{ title: 'Virtual Account', link: '#' }, { title: 'Virtual Account Report', link: null, isActive: true }]}
         />
-        <ContentVirtualacountReport />
+        <ContentVirtualacountReport {...this.props} />
       </div>
     )
   }

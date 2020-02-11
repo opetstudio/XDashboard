@@ -90,7 +90,8 @@ const api = DebugConfig.useFixtures ? FixtureAPI : API.create(host)
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'http://localhost:8762/dashboard-api/')
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'http://188.166.198.144:8762/dashboard-api/')
 // const apiDashboard = API.create(AppConfig.env === 'development' ? 'http://localhost:8762/dashboard-api/' : 'https://dev-directdebit.plink.co.id/dashboard-api/')
-const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8280' : 'http://159.65.131.214:30397'
+const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8280' : 'http://localhost:8280'
+// const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8280' : 'http://159.65.131.214:30397'
 // const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'https://api.erevnaraya.com'
 
 const apiDashboard = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBackend + '')
@@ -110,13 +111,13 @@ const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(hostBac
 export default function * root () {
   yield all([
 
-    takeLatest(PaginationTypes.SUBMIT_FILTER, submitFilter, API.create('http://localhost:8280')),
+    takeLatest(PaginationTypes.SUBMIT_FILTER, submitFilter, API.create(hostBackend + AppConfig.basePath + '/')),
 
     takeLatest(BankTypes.BANK_FETCH_CREDENTIAL, bankFetchCredential, apiDashboard),
     takeLatest(DashboardTypes.DASHBOARD_FETCH, dashbaordFetch, apiDashboard),
 
-    takeLatest(UserTypes.USER_CREATE_REQUEST, userCreateRequest, API.create(hostBackend + '/dashboard/')),
-    takeLatest(UserTypes.USER_READ_REQUEST, userReadRequest, API.create(hostBackend + '/dashboard/')),
+    takeLatest(UserTypes.USER_CREATE_REQUEST, userCreateRequest, API.create(hostBackend + AppConfig.basePath + '/')),
+    takeLatest(UserTypes.USER_READ_REQUEST, userReadRequest, API.create(hostBackend + AppConfig.basePath + '/')),
     
     takeLatest(TransactionTypes.TRANSACTION_FETCH_ONE, transactionFetchOne, apiDashboardPy),
     takeLatest(TransactionTypes.TRANSACTION_REFUND_FETCH_ONE, transactionRefundFetchOne, apiDashboardPy),

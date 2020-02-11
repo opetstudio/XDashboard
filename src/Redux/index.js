@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist'
 import CreateStore from './CreateStore'
 import rootSaga from '../Sagas/'
 import ReduxPersist from '../Config/ReduxPersist'
+import { any } from 'ramda'
 
 export default () => {
   /* ------------- Assemble The Reducers ------------- */

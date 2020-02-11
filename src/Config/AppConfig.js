@@ -8,7 +8,7 @@ export default {
   //   host: cred.AUTH0_HOST
   // },
   backendURL: '',
-  basePath: '/dashboard',
+  basePath: '',
   env,
   minDesktopScreenWidth: 770,
   authHeader: env === 'development' ? 'Authorization' : 'Authorization',

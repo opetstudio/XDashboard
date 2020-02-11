@@ -38,15 +38,11 @@ export const val = (type, userPrefs, duration) => {
     ],
     [
       equals('saved'),
-      always(() =>
-        // console.log(getMessage(langWithDefault(userPrefs), 'saved'), duration)
-      )
+      always(() => console.log(getMessage(langWithDefault(userPrefs), 'saved'), duration))
     ],
     [
       equals('error'),
-      always(() =>
-        // console.log(getMessage(langWithDefault(userPrefs), 'error'), duration)
-      )
+      always(() => console.log(getMessage(langWithDefault(userPrefs), 'error'), duration))
     ]
   ])
   return msg(type)

@@ -4,9 +4,11 @@ PROJECT_JSP="mbdd-merchant"
 npm run build
 cp -rf build/manifest.json ~/workspace_java/$PROJECT_JSP/src/main/webapp/
 cp -rf build/static/* ~/workspace_java/$PROJECT_JSP/src/main/resources/static/static/
-cp -rf build/bower_components ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
+# cp -rf build/bower_components ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
 cp -rf build/dist ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
 cp -rf build/favicon.ico ~/workspace_java/$PROJECT_JSP/src/main/webapp/
+cp -rf build/logo192.png ~/workspace_java/$PROJECT_JSP/src/main/webapp/
+cp -rf build/logo512.png ~/workspace_java/$PROJECT_JSP/src/main/webapp/
 cp -rf build/plugins ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
 cp -rf build/service-worker.js ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
 cp -rf build/native-script.js ~/workspace_java/$PROJECT_JSP/src/main/resources/static/
